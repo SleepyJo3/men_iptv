@@ -70,8 +70,8 @@ a{color:inherit}
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 0;
 }
-.brand{display:flex; align-items:center; gap:8px; text-decoration:none}
-.brand__logo{height:39px; width:auto; display:block; object-fit:contain; transform:translateY(2px)}
+.brand{display:flex; align-items:center; gap:4px; text-decoration:none}
+.brand__logo{height:50px; width:auto; display:block; object-fit:contain; transform:translateY(0)}
 .brand__text{display:flex; flex-direction:column; gap:2px}
 .brand__mark{
   font-weight:900; letter-spacing:.10em;
