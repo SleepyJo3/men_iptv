@@ -296,13 +296,20 @@
           <div class="cwLeft">
             <div class="cwLeftTop">
               <div class="cwVisual">
-                <div class="cwPlayWrap">
-                  <div class="cwPlay" role="button" tabindex="0" aria-label="Előnézet megjelenítése" data-scroll="#plans"></div>
-                  <div class="cwPlayMeta">
-                    <span class="cwPlayIndicator" aria-hidden="true"></span>
-                    <span class="cwPlayNote">Élő kínálat – ízelítő</span>
-                  </div>
-                </div>
+               <div class="cwVideoWrap" aria-hidden="true">
+  <video
+    class="cwVideo"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="assets/video/content-loop.mp4?v=1" type="video/mp4">
+  </video>
+  <div class="cwVideoOverlay"></div>
+</div>
+
               </div>
               <div class="cwStats">
                 <div class="cwCard" style="--delay:0ms;">
