@@ -1579,74 +1579,133 @@ header.topbar .brand .brand__tag{
 }
 
 /* =========================================================
-   CONTENT WALL v3 — FINAL FIX (NO HOVER PANEL, 3 COLUMNS)
+   CONTENT WALL — hover preview panel (drops down from left)
    ========================================================= */
 
-.contentWall .cwPreview,
-.contentWall .cwItem,
-.contentWall.is-preview .cwPreview{
-  display:none !important;
-  opacity:0 !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
+.contentWall .cwGrid{
+  display:grid;
+  grid-template-columns: 240px 420px minmax(420px, 1fr);
+  gap: 28px;
+  align-items:start;
 }
 
-.contentWall .cwGrid.cwGrid--v3{
-  display:grid !important;
-  grid-template-columns: 240px 380px 1fr !important;
-  gap: 34px !important;
-  align-items:center !important;
-}
-
-.contentWall .cwGrid:not(.cwGrid--v3){
-  grid-template-columns: 1fr !important;
+.contentWall .cwLeft{
+  grid-column: 1 / span 2;
+  position:relative;
+  display:grid;
+  grid-template-columns: 240px 420px;
+  gap: 28px;
+  align-items:center;
+  z-index:2;
 }
 
 .contentWall .cwVisual{
-  position:relative !important;
-  z-index:1 !important;
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  justify-content:center !important;
-  min-height: 320px !important;
-}
-
-.contentWall .cwPlay{
-  cursor: default !important;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height: 320px;
 }
 
 .contentWall .cwStats{
-  position:relative !important;
-  z-index:2 !important;
-  display:grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 14px !important;
-  align-content:center !important;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width:100%;
 }
 
-.contentWall .contentWall__copy.cwCopy{
-  position:relative !important;
-  z-index:3 !important;
+.contentWall .cwStats .cwCard{
+  opacity:1;
+  transform:none;
+  animation:none;
 }
 
-@media (max-width: 980px){
-  .contentWall .cwGrid.cwGrid--v3{
-    grid-template-columns: 1fr !important;
-    gap: 22px !important;
-    text-align:center;
+.contentWall .cwCopy{
+  grid-column: 3;
+  position:relative;
+  z-index:3;
+}
+
+.contentWall .cwPreview{
+  display:block;
+  grid-column: 1 / -1;
+  position:absolute;
+  left:0;
+  top: calc(100% + 14px);
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 18px;
+  border-radius:16px;
+  background: rgba(7,7,10,.60);
+  border:1px solid rgba(255,45,30,.35);
+  box-shadow: 0 24px 46px rgba(0,0,0,.65), inset 0 0 28px rgba(255,106,0,.12);
+  opacity:0;
+  transform: translateY(-8px);
+  pointer-events:none;
+  visibility:hidden;
+  transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+}
+
+.contentWall.is-preview .cwPreview{
+  opacity:0;
+  transform: translateY(-8px);
+  pointer-events:none;
+  visibility:hidden;
+}
+
+.contentWall .cwLeft:hover .cwPreview{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+  visibility:visible;
+  transition-delay:0s;
+}
+
+.contentWall .cwItem{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color: rgba(238,231,218,.92);
+  font-size:14px;
+  line-height:1.55;
+}
+
+.contentWall .cwItem + .cwItem{
+  margin-top:8px;
+}
+
+@media (max-width: 900px){
+  .contentWall .cwGrid{
+    grid-template-columns:1fr;
   }
-  .contentWall .cwStats{
-    grid-template-columns: 1fr 1fr !important;
-    max-width: 520px;
-    margin: 0 auto;
+  .contentWall .cwLeft{
+    grid-column:auto;
+    grid-template-columns:1fr;
   }
-  .contentWall .contentWall__copy.cwCopy{
-    max-width: 720px;
-    margin: 0 auto;
-    text-align:left;
+  .contentWall .cwPreview{
+    position:relative;
+    top:auto;
+    left:auto;
+    transform:none;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    margin-top:14px;
+  }
+  .contentWall.is-preview .cwPreview{
+    transform:none;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .contentWall .cwCopy{
+    grid-column:auto;
   }
 }
+
 @media (max-width: 560px){
-  .contentWall .cwStats{ grid-template-columns: 1fr !important; }
+  .contentWall .cwStats{
+    grid-template-columns:1fr;
+  }
 }
