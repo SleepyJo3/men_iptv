@@ -1117,10 +1117,6 @@ details p{margin:10px 0 0; color:rgba(238,231,218,.74); line-height:1.6}
   transition: opacity .25s ease, transform .25s ease;
 }
 
-.contentWall.is-preview .cwPlayIndicator{
-  opacity:1;
-  transform:scale(1.1);
-}
 
 .contentWall .cwPlayNote{
   display:inline-block;
@@ -1227,15 +1223,6 @@ details p{margin:10px 0 0; color:rgba(238,231,218,.74); line-height:1.6}
   color:rgba(245,238,226,.92);
 }
 
-.contentWall.is-preview .cwPreview{
-  opacity:1;
-  transform: translateY(0);
-}
-
-.contentWall.is-preview .cwCard{
-  animation: cwCardIn .55s ease forwards;
-  animation-delay: var(--delay, 0ms);
-}
 
 @keyframes cwCardIn{
   from{ opacity:0; transform: translateY(12px); }
@@ -1579,40 +1566,32 @@ header.topbar .brand .brand__tag{
 }
 
 /* =========================================================
-   CONTENT WALL — hover preview panel (drops down from left)
+   CONTENT WALL FIX (NO OVERLAP)
    ========================================================= */
 
 .contentWall .cwGrid{
   display:grid;
-  grid-template-columns: 240px 420px minmax(420px, 1fr);
-  gap: 28px;
+  grid-template-columns: 1.05fr .95fr;
+  gap:48px;
   align-items:start;
 }
 
 .contentWall .cwLeft{
-  grid-column: 1 / span 2;
-  position:relative;
   display:grid;
-  grid-template-columns: 240px 420px;
-  gap: 28px;
-  align-items:center;
-  z-index:2;
+  gap:14px;
 }
 
-.contentWall .cwVisual{
-  position:relative;
-  display:flex;
-  flex-direction:column;
+.contentWall .cwLeftTop{
+  display:grid;
+  grid-template-columns: 220px minmax(0,1fr);
+  gap:24px;
   align-items:center;
-  justify-content:center;
-  min-height: 320px;
 }
 
 .contentWall .cwStats{
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  width:100%;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:12px;
 }
 
 .contentWall .cwStats .cwCard{
@@ -1622,50 +1601,32 @@ header.topbar .brand .brand__tag{
 }
 
 .contentWall .cwCopy{
-  grid-column: 3;
   position:relative;
-  z-index:3;
 }
 
 .contentWall .cwPreview{
   display:block;
-  grid-column: 1 / -1;
-  position:absolute;
-  left:0;
-  top: calc(100% + 14px);
-  width: 100%;
-  max-width: 100%;
-  padding: 16px 18px;
+  margin-top:6px;
+  padding:0 18px;
   border-radius:16px;
   background: rgba(7,7,10,.60);
   border:1px solid rgba(255,45,30,.35);
-  box-shadow: 0 24px 46px rgba(0,0,0,.65), inset 0 0 28px rgba(255,106,0,.12);
+  box-shadow: 0 18px 40px rgba(0,0,0,.55), inset 0 0 26px rgba(255,106,0,.10);
+  max-height:0;
   opacity:0;
-  transform: translateY(-8px);
-  pointer-events:none;
-  visibility:hidden;
-  transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
-}
-
-.contentWall.is-preview .cwPreview{
-  opacity:0;
-  transform: translateY(-8px);
-  pointer-events:none;
-  visibility:hidden;
+  overflow:hidden;
+  transform: translateY(-6px);
+  transition: max-height .28s ease, opacity .18s ease, transform .22s ease, padding .28s ease;
 }
 
 .contentWall .cwLeft:hover .cwPreview{
+  max-height:220px;
   opacity:1;
   transform: translateY(0);
-  pointer-events:auto;
-  visibility:visible;
-  transition-delay:0s;
+  padding:16px 18px;
 }
 
 .contentWall .cwItem{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
   color: rgba(238,231,218,.92);
   font-size:14px;
   line-height:1.55;
@@ -1678,34 +1639,18 @@ header.topbar .brand .brand__tag{
 @media (max-width: 900px){
   .contentWall .cwGrid{
     grid-template-columns:1fr;
+    gap:26px;
   }
-  .contentWall .cwLeft{
-    grid-column:auto;
+  .contentWall .cwLeftTop{
     grid-template-columns:1fr;
+    justify-items:center;
+    text-align:center;
   }
   .contentWall .cwPreview{
-    position:relative;
-    top:auto;
-    left:auto;
-    transform:none;
+    max-height:none;
     opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    margin-top:14px;
-  }
-  .contentWall.is-preview .cwPreview{
     transform:none;
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-  }
-  .contentWall .cwCopy{
-    grid-column:auto;
-  }
-}
-
-@media (max-width: 560px){
-  .contentWall .cwStats{
-    grid-template-columns:1fr;
+    padding:16px 18px;
+    margin-top:12px;
   }
 }
