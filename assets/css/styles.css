@@ -70,13 +70,15 @@ a{color:inherit}
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 0;
 }
-.brand{display:flex; align-items:center; gap:4px; text-decoration:none}
-.brand__logo{height:50px; width:auto; display:block; object-fit:contain; transform:translateY(0)}
+.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+.brand__logo{height:34px; width:auto; display:block; flex:0 0 auto}
 .brand__text{display:flex; flex-direction:column; gap:2px}
 .brand__mark{
   font-weight:900; letter-spacing:.10em;
-  color:var(--ember);
+  line-height:1;
 }
+.brand__men{color:#ffffff}
+.brand__iptv{color:var(--accent, #ff5a2b)}
 .brand__tag{font-size:11px; color:rgba(238,231,218,.62); letter-spacing:.18em}
 
 .nav{display:flex; gap:18px}
@@ -1180,10 +1182,13 @@ details p{margin:10px 0 0; color:rgba(238,231,218,.74); line-height:1.6}
     margin-bottom:32px;
   }
   .brand{
-    gap:6px;
+    gap:12px;
   }
-  .brand__logo{
-    height:33px;
+}
+
+@media (max-width: 520px) {
+  .brand__logo {
+    height:28px;
   }
 }
 
