@@ -21,7 +21,7 @@
 
   <header class="topbar">
     <div class="wrap topbar__inner">
-      <a class="brand" href="#order" style="text-decoration:none">
+      <a class="brand" href="#order">
         <div class="brand__mark">MENIPTV</div>
         <div class="brand__tag">KING OF STREAMING</div>
       </a>
@@ -38,44 +38,42 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO_OLD
     <section class="hero" id="order">
       <div class="wrap hero__grid">
         <div class="hero__left">
-  <h1>
-    <span class="hero__king">KING</span>
-    <span class="hero__streaming">OF IPTV</span>
-  </h1>
+          <h1>
+            <span class="hero__king">KING</span>
+            <span class="hero__streaming">OF IPTV</span>
+          </h1>
 
-  <p class="hero__lead">
-    Korlátok nélküli prémium streamelés
-  </p>
+          <p class="hero__lead">
+            Korlátok nélküli prémium streamelés
+          </p>
 
-  <p class="hero__sublead">
-    Stabil stream. Prémium tartalom. Gyors beállítás.<br>
-    <span class="hero__tagline">Azoknak, akik nem kötnek kompromisszumot.</span>
-  </p>
+          <p class="hero__sublead">
+            Stabil stream. Prémium tartalom. Gyors beállítás.<br>
+            <span class="hero__tagline">Azoknak, akik nem kötnek kompromisszumot.</span>
+          </p>
 
-  <ul class="bullets">
-    <li>⚡ Aktiválás munkaidőben jellemzően 30 percen belül</li>
-    <li>🔥 Prémium kínálat: TV · Filmek · Sorozatok · Sport · Felnőtt</li>
-    <li>📺 Android · Fire TV · iOS · Smart TV támogatás</li>
-  </ul>
+          <ul class="bullets">
+            <li>⚡ Aktiválás munkaidőben jellemzően 30 percen belül</li>
+            <li>🔥 Prémium kínálat: TV · Filmek · Sorozatok · Sport · Felnőtt</li>
+            <li>📺 Android · Fire TV · iOS · Smart TV támogatás</li>
+          </ul>
 
-  <div class="hero__ctaRow">
-    <a class="btn btn--primary" href="#plans">CSOMAGOK MEGTEKINTÉSE</a>
-    <a class="btn btn--ghost" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">KÉRDÉSED VAN?</a>
-  </div>
+          <div class="hero__ctaRow">
+            <a class="btn btn--primary" href="#plans">CSOMAGOK MEGTEKINTÉSE</a>
+            <a class="btn btn--ghost" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">KÉRDÉSED VAN?</a>
+          </div>
 
-  <div class="trustBadges">
-    <span>24/7 támogatás</span>
-    <span>Gyors beállítás</span>
-    <span>Több eszköz</span>
-  </div>
-</div>
+          <div class="trustBadges">
+            <span>24/7 támogatás</span>
+            <span>Gyors beállítás</span>
+            <span>Több eszköz</span>
+          </div>
+        </div>
 
-
-        <!-- ORDER BOX -->
         <aside class="orderBox" aria-label="Quick order">
           <div class="orderBox__head">
             <div class="orderBox__title">Quick Order</div>
@@ -83,7 +81,6 @@
           </div>
 
           <form id="orderForm" class="orderForm" autocomplete="on">
-            <!-- Honeypot -->
             <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" />
 
             <label class="field">
@@ -161,6 +158,145 @@
             </div>
           </form>
         </aside>
+      </div>
+    </section>
+    -->
+
+    <!-- HERO_V2 -->
+    <section class="hero hero--v2" id="order">
+      <div class="wrap hero__grid hero__grid--v2">
+        <div class="hero__left hero__left--v2">
+          <div class="hero__headline">
+            <h1>
+              <span class="hero__king">KING</span>
+              <span class="hero__streaming">OF IPTV</span>
+            </h1>
+            <p class="hero__subtitle">Prémium streamelés. Korlátok nélkül. Egy rendszerben.</p>
+            <p class="hero__intro">Megbízható streamelési megoldás azoknak, akik széles kínálatot és gyors beállítást keresnek.</p>
+            <p class="hero__intro hero__intro--strong">Prémium tartalom. Rugalmas használat. Több eszközön.</p>
+          </div>
+
+          <ul class="hero__valueList">
+            <li>200+ válogatott magyar nyelvű csatorna HD / Full HD minőségben</li>
+            <li>5 000+ magyar szinkronos film online eléréssel</li>
+            <li>900+ azonnal nézhető sorozat</li>
+            <li>Egy előfizetés – több eszközön használható</li>
+          </ul>
+
+          <div class="hero__ctaRow hero__ctaRow--v2">
+            <a class="btn btn--primary" href="#plans">Csomagok megtekintése</a>
+            <a class="btn btn--ghost" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">Kérdésed van?</a>
+          </div>
+        </div>
+
+        <aside class="orderBox" aria-label="Quick order">
+          <div class="orderBox__head">
+            <div class="orderBox__title">Quick Order</div>
+            <div class="orderBox__sub">We reply fast • Setup guidance included</div>
+          </div>
+
+          <form id="orderForm" class="orderForm" autocomplete="on">
+            <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" />
+
+            <label class="field">
+              <span>Plan</span>
+              <select name="plan" id="plan" required>
+                <option value="">Select plan</option>
+                <option value="1 Month">1 Month</option>
+                <option value="3 Months">3 Months</option>
+                <option value="6 Months">6 Months</option>
+                <option value="12 Months">12 Months</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Devices</span>
+              <select name="devices" id="devices" required>
+                <option value="">Select devices</option>
+                <option value="1">1 Device</option>
+                <option value="2">2 Devices</option>
+                <option value="3">3 Devices</option>
+              </select>
+            </label>
+
+            <div class="row2">
+              <label class="field">
+                <span>Type</span>
+                <select name="type" id="type" required>
+                  <option value="New">New</option>
+                  <option value="Renewal">Renewal</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>App / Device</span>
+                <select name="app" id="app">
+                  <option value="">(optional)</option>
+                  <option value="TiviMate">TiviMate</option>
+                  <option value="IPTV Smarters">IPTV Smarters</option>
+                  <option value="Fire TV">Fire TV</option>
+                  <option value="Android TV">Android TV</option>
+                  <option value="iOS">iOS</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Email or Telegram username</span>
+              <input type="text" name="contact" id="contact" placeholder="email@domain.com or @username" required />
+            </label>
+
+            <label class="field hidden" id="renewUserField">
+              <span>Renewal username / line</span>
+              <input type="text" name="renew_username" id="renew_username" placeholder="Your existing username" />
+            </label>
+
+            <button type="submit" class="btn btn--primary" id="submitBtn">
+              ORDER NOW
+            </button>
+
+            <div class="formMeta">
+              <span>🔒 Private</span>
+              <span>⚡ Fast reply</span>
+              <span>🛠 Setup help</span>
+            </div>
+
+            <div class="status" id="status" role="status" aria-live="polite"></div>
+
+            <a class="btn btn--telegram" id="telegramPrefill" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">
+              Open Telegram (prefill)
+            </a>
+
+            <div class="tinyNote">
+              By ordering, you confirm you have the right to access content in your region.
+            </div>
+          </form>
+        </aside>
+
+        <div class="hero__support">
+          <div class="hero__devices">TV · Mobil · Tablet · Android · Fire TV · Smart TV</div>
+
+          <div class="hero__bonus">
+            <div class="hero__bonusTitle">BÓNUSZ TARTALOM:</div>
+            <ul>
+              <li>45+ prémium magyar csatorna</li>
+              <li>10 000+ külföldi csatorna</li>
+              <li>Filmek, sorozatok, sport és felnőtt tartalom egy helyen</li>
+            </ul>
+          </div>
+
+          <p class="hero__activation">
+            Az aktiválás munkaidőben jellemzően rövid időn belül megtörténik. Igény esetén beállítási segítséget biztosítunk.
+          </p>
+
+          <div class="trustBadges trustBadges--v2">
+            <span>Munkaidőben elérhető támogatás</span>
+            <span>Gyors beállítás</span>
+            <span>Több eszköz használata</span>
+            <span>Privát hozzáférés</span>
+          </div>
+        </div>
       </div>
     </section>
 
