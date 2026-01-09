@@ -1775,3 +1775,19 @@ header.topbar .brand .brand__tag{
     max-height:280px;
   }
 }
+/* === CONTENT WALL VIDEO – FINISHING TOUCH === */
+
+.cwVideoWrap{
+  border-radius: 18px;
+  overflow: hidden;
+  transform: perspective(900px) rotateY(-3deg);
+}
+
+.cwVideoOverlay{
+  background:
+    radial-gradient(
+      80% 80% at 50% 50%,
+      transparent 60%,
+      rgba(0,0,0,.45) 100%
+    );
+}
