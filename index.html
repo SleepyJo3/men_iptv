@@ -290,25 +290,50 @@
     </section>
 
     <!-- CONTENT WALL -->
-    <section class="contentWall" aria-label="Content wall">
+    <section class="contentWall" id="content-wall" aria-label="Content wall">
       <div class="wrap contentWall__inner">
         <div class="cwGrid">
           <div class="cwVisual">
-            <div class="cwPlay" role="button" tabindex="0" aria-label="Ugrás a csomagokhoz" data-scroll="#plans"></div>
+            <div class="cwPlayWrap">
+              <div class="cwPlay" role="button" tabindex="0" aria-label="Előnézet megjelenítése" data-scroll="#plans"></div>
+              <div class="cwPlayMeta">
+                <span class="cwPlayIndicator" aria-hidden="true"></span>
+                <span class="cwPlayNote">Élő kínálat – ízelítő</span>
+              </div>
+            </div>
+            <div class="cwPreview" aria-hidden="true">
+              <div class="cwCard" style="--delay:0ms;">
+                <div class="cwCardLabel">🔴 MOST ÉLŐ</div>
+                <div class="cwCardTitle">Premier League — HD/FHD/4K</div>
+              </div>
+              <div class="cwCard" style="--delay:120ms;">
+                <div class="cwCardLabel">🎬 AJÁNLOTT FILMEK</div>
+                <div class="cwCardTitle">Prémium VOD — 2026/2025</div>
+              </div>
+              <div class="cwCard" style="--delay:240ms;">
+                <div class="cwCardLabel">📺 NÉPSZERŰ SOROZATOK</div>
+                <div class="cwCardTitle">Teljes évadok elérhetőek</div>
+              </div>
+              <div class="cwCard" style="--delay:360ms;">
+                <div class="cwCardLabel">🏆 SPORT CSATORNÁK</div>
+                <div class="cwCardTitle">UFC • F1 • BL</div>
+              </div>
+            </div>
           </div>
           <div class="cwText">
             <div class="contentWall__copy">
-              <div class="contentWall__eyebrow">CONTENT WALL</div>
-              <p class="contentWall__headline">Thousands of movies, series &amp; live sports — no limits.</p>
-              <p class="contentWall__sub">From global channels to premium VOD, explore a constantly refreshed library built for binge-ready nights.</p>
+              <div class="contentWall__eyebrow">MÉDIA KÖNYVTÁR</div>
+              <p class="contentWall__headline">Több ezer film, sorozat és élő sport — korlátok nélkül.</p>
+              <p class="contentWall__sub">Nemzetközi TV csatornáktól a prémium VOD-ig. Folyamatosan frissülő kínálat, határtalan élmény.</p>
               <div class="contentWall__chips contentWall__chips--categories">
-                <span class="chip chip--category">🎬 Movies</span>
-                <span class="chip chip--category">📺 Series</span>
-                <span class="chip chip--category">🏟️ Sports</span>
+                <span class="chip chip--category">TV</span>
+                <span class="chip chip--category">FILMEK</span>
+                <span class="chip chip--category">SOROZATOK</span>
+                <span class="chip chip--category">SPORT</span>
               </div>
               <div class="contentWall__chips contentWall__chips--cta">
-                <a class="chip chip--ghost" href="#plans">View Plans</a>
-                <a class="chip chip--outline" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">Ask on Telegram</a>
+                <a class="chip chip--ghost js-scroll-plans" href="#plans">CSOMAGOK MEGTEKINTÉSE</a>
+                <a class="chip chip--outline" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">KÉRDEZZ TELEGRAMON</a>
               </div>
             </div>
           </div>
@@ -485,24 +510,54 @@
   <script src="assets/js/order.js?v=1"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
+      var contentWall = document.querySelector('.contentWall');
       var play = document.querySelector('.contentWall .cwPlay');
-      if(!play) return;
+      var playNote = document.querySelector('.contentWall .cwPlayNote');
+      var preview = document.querySelector('.contentWall .cwPreview');
+      if(!play || !contentWall) return;
 
-      function go(){
+      function scrollToPlans(){
         var sel = play.getAttribute('data-scroll') || '#plans';
         var target = document.querySelector(sel);
         if(!target) return;
-        // offset for sticky header (safe default)
         var y = target.getBoundingClientRect().top + window.pageYOffset - 90;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
 
-      play.addEventListener('click', go);
+      function setPreviewState(isPreview){
+        contentWall.classList.toggle('is-preview', isPreview);
+        play.setAttribute('aria-label', isPreview ? 'Ugrás a csomagokhoz' : 'Előnézet megjelenítése');
+        if(preview){
+          preview.setAttribute('aria-hidden', isPreview ? 'false' : 'true');
+        }
+        if(playNote){
+          playNote.textContent = isPreview
+            ? 'Előnézet aktív — kattints újra a csomagokhoz'
+            : 'Élő kínálat – ízelítő';
+        }
+      }
+
+      function handlePlay(){
+        if(contentWall.classList.contains('is-preview')){
+          scrollToPlans();
+          return;
+        }
+        setPreviewState(true);
+      }
+
+      play.addEventListener('click', handlePlay);
       play.addEventListener('keydown', function(e){
         if(e.key === 'Enter' || e.key === ' '){
           e.preventDefault();
-          go();
+          handlePlay();
         }
+      });
+
+      document.querySelectorAll('.js-scroll-plans').forEach(function(link){
+        link.addEventListener('click', function(e){
+          e.preventDefault();
+          scrollToPlans();
+        });
       });
     });
   </script>
