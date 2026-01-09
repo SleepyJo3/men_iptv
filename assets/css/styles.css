@@ -70,12 +70,13 @@ a{color:inherit}
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 0;
 }
-.brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+.brand{display:flex; align-items:center; gap:6px; text-decoration:none}
 .brand__logo{height:34px; width:auto; display:block; flex:0 0 auto}
 .brand__text{display:flex; flex-direction:column; gap:2px}
 .brand__mark{
   font-weight:900; letter-spacing:.10em;
   line-height:1;
+  margin-left:-2px;
 }
 .brand__men{color:#ffffff}
 .brand__iptv{color:var(--accent, #ff5a2b)}
@@ -1182,7 +1183,7 @@ details p{margin:10px 0 0; color:rgba(238,231,218,.74); line-height:1.6}
     margin-bottom:32px;
   }
   .brand{
-    gap:12px;
+    gap:6px;
   }
 }
 
@@ -1396,3 +1397,6 @@ body{
   padding: 86px 0 70px !important; /* volt 110/90 */
   margin-top: 0 !important;
 }
+
+.topbar .brand__mark .brand__men { color: #fff !important; }
+.topbar .brand__mark .brand__iptv { color: var(--accent, #ff5a2b) !important; }
