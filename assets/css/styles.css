@@ -1400,3 +1400,29 @@ body{
 
 .topbar .brand__mark .brand__men { color: #fff !important; }
 .topbar .brand__mark .brand__iptv { color: var(--accent, #ff5a2b) !important; }
+
+/* === Header logo sizing + spacing fix (brand only) === */
+header.topbar .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+header.topbar .brand .brand__logo{
+  height:34px;
+  width:auto;
+  display:block;
+  flex:0 0 auto;
+  max-width:none;
+}
+
+header.topbar .brand .brand__mark,
+header.topbar .brand .brand__tag{
+  margin:0;
+}
+
+@media (max-width: 640px){
+  header.topbar .brand .brand__logo{
+    height:28px;
+  }
+}
