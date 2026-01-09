@@ -289,56 +289,44 @@
       </div>
     </section>
 
-    <!-- CONTENT WALL -->
-    <section class="contentWall" id="content-wall" aria-label="Content wall">
-      <div class="wrap contentWall__inner">
-        <div class="cwGrid">
-          <div class="cwLeft">
-            <div class="cwLeftTop">
-              <div class="cwVisual">
-               <div class="cwVideoWrap" aria-hidden="true">
-  <video
-    class="cwVideo"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="metadata"
-  >
-    <source src="assets/video/content-loop.mp4?v=1" type="video/mp4">
-  </video>
-  <div class="cwVideoOverlay"></div>
-</div>
+   <!-- CONTENT WALL -->
+<section class="contentWall" id="content-wall" aria-label="Content wall">
+  <div class="wrap contentWall__inner">
+    <div class="cwGrid">
 
-              </div>
-          
-            </div>
-            <div class="cwPreview" aria-hidden="true">
-              <div class="cwItem">🔴 MOST ÉLŐ: Premier League — HD/FHD/4K</div>
-              <div class="cwItem">🎬 AJÁNLOTT FILMEK: Prémium VOD — 2026/2025</div>
-              <div class="cwItem">📺 NÉPSZERŰ SOROZATOK: Teljes évadok elérhetők</div>
-              <div class="cwItem">🏆 SPORT: UFC • F1 • BL</div>
-            </div>
-          </div>
-          <div class="contentWall__copy cwCopy">
-            <div class="contentWall__eyebrow">MÉDIA KÖNYVTÁR</div>
-            <p class="contentWall__headline">Több ezer film, sorozat és élő sport — korlátok nélkül.</p>
-            <p class="contentWall__sub">Nemzetközi TV csatornáktól a prémium VOD-ig. Folyamatosan frissülő kínálat, határtalan élmény.</p>
-            <div class="contentWall__chips contentWall__chips--categories">
-              <span class="chip chip--category">TV</span>
-              <span class="chip chip--category">FILMEK</span>
-              <span class="chip chip--category">SOROZATOK</span>
-              <span class="chip chip--category">SPORT</span>
-            </div>
-            <div class="contentWall__chips contentWall__chips--cta">
-              <a class="chip chip--ghost js-scroll-plans" href="#plans">CSOMAGOK MEGTEKINTÉSE</a>
-              <a class="chip chip--outline" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">KÉRDEZZ TELEGRAMON</a>
-            </div>
-          </div>
+      <!-- LEFT: VIDEO (no hover/preview, no stats, no play) -->
+      <div class="cwVisual">
+        <div class="cwVideoWrap js-scroll-plans" role="button" tabindex="0" aria-label="Csomagok megtekintése">
+          <video class="cwVideo" autoplay muted loop playsinline preload="metadata">
+            <source src="assets/video/content-loop.mp4?v=1" type="video/mp4">
+          </video>
+          <div class="cwVideoOverlay" aria-hidden="true"></div>
         </div>
       </div>
-    </section>
-      
+
+      <!-- RIGHT: COPY -->
+      <div class="contentWall__copy cwCopy">
+        <div class="contentWall__eyebrow">MÉDIA KÖNYVTÁR</div>
+        <p class="contentWall__headline">Több ezer film, sorozat és élő sport — korlátok nélkül.</p>
+        <p class="contentWall__sub">Nemzetközi TV csatornáktól a prémium VOD-ig. Folyamatosan frissülő kínálat, határtalan élmény.</p>
+
+        <div class="contentWall__chips contentWall__chips--categories">
+          <span class="chip chip--category">TV</span>
+          <span class="chip chip--category">FILMEK</span>
+          <span class="chip chip--category">SOROZATOK</span>
+          <span class="chip chip--category">SPORT</span>
+        </div>
+
+        <div class="contentWall__chips contentWall__chips--cta">
+          <a class="chip chip--ghost js-scroll-plans" href="#plans">CSOMAGOK MEGTEKINTÉSE</a>
+          <a class="chip chip--outline" href="https://t.me/YOUR_TELEGRAM_USERNAME_OR_BOT" target="_blank" rel="noopener">KÉRDEZZ TELEGRAMON</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
       <!-- LOGO STRIP -->
 <section class="logoStrip" aria-label="Available platforms">
   <div class="wrap logoStrip__inner">
