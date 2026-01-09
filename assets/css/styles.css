@@ -70,7 +70,9 @@ a{color:inherit}
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 0;
 }
-.brand{display:flex; flex-direction:column; gap:2px; text-decoration:none}
+.brand{display:flex; align-items:center; text-decoration:none}
+.brand__logo{height:40px; width:auto; margin-right:12px}
+.brand__text{display:flex; flex-direction:column; gap:2px}
 .brand__mark{
   font-weight:900; letter-spacing:.10em;
   color:var(--ember);
@@ -1176,6 +1178,9 @@ details p{margin:10px 0 0; color:rgba(238,231,218,.74); line-height:1.6}
   }
   .contentWall .cwVisual{
     margin-bottom:32px;
+  }
+  .brand__logo{
+    height:32px;
   }
 }
 
