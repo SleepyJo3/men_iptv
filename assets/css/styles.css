@@ -1700,3 +1700,78 @@ header.topbar .brand .brand__tag{
     margin:0 auto;
   }
 }
+/* ==============================
+   CONTENT WALL – VIDEO FINAL FIX
+   ============================== */
+
+.contentWall .cwGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  align-items:stretch; /* a két oszlop azonos magasságot vesz fel */
+  gap:48px;
+}
+
+/* Bal oldal: videó */
+.contentWall .cwVisual{
+  display:flex;
+  align-items:stretch; /* vegye fel a grid magasságát */
+  min-height:0;        /* fontos, hogy ne feszítse túl */
+}
+
+/* Video wrapper */
+.contentWall .cwVideoWrap{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:0;
+  display:flex;
+  align-items:center;   /* középre a videót */
+  justify-content:center;
+}
+
+/* Video itself: soha ne legyen magasabb mint a jobb oldali doboz */
+.contentWall .cwVideo{
+  width:100%;
+  height:auto;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:18px;
+  display:block;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.65),
+    0 0 40px rgba(255,45,30,.18);
+}
+
+/* Overlay: finom vignette + glow */
+.contentWall .cwVideoOverlay{
+  pointer-events:none;
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  background:
+    radial-gradient(600px 420px at 50% 55%, rgba(255,45,30,.10), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.15) 40%, rgba(0,0,0,.55));
+  mix-blend-mode:normal;
+  opacity:.85;
+}
+
+/* Jobb oldali box szabja meg a magasságot */
+.contentWall__copy{
+  align-self:stretch;
+}
+
+/* Mobil: egymás alá */
+@media (max-width: 900px){
+  .contentWall .cwGrid{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .contentWall .cwVisual{
+    align-items:center;
+  }
+
+  .contentWall .cwVideo{
+    max-height:280px;
+  }
+}
