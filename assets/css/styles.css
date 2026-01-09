@@ -1577,97 +1577,76 @@ header.topbar .brand .brand__tag{
     height:30px !important;        /* <-- MOBILE SIZE */
   }
 }
-/* ==============================
-   CONTENT WALL – PLAY HOVER PREVIEW (CSS ONLY)
-   ============================== */
+
+/* =========================================================
+   CONTENT WALL v3 — FINAL FIX (NO HOVER PANEL, 3 COLUMNS)
+   ========================================================= */
+
+.contentWall .cwPreview,
+.contentWall .cwItem,
+.contentWall.is-preview .cwPreview{
+  display:none !important;
+  opacity:0 !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+.contentWall .cwGrid.cwGrid--v3{
+  display:grid !important;
+  grid-template-columns: 240px 380px 1fr !important;
+  gap: 34px !important;
+  align-items:center !important;
+}
+
+.contentWall .cwGrid:not(.cwGrid--v3){
+  grid-template-columns: 1fr !important;
+}
 
 .contentWall .cwVisual{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position:relative !important;
+  z-index:1 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height: 320px !important;
 }
 
-/* Preview panel – hidden by default */
-.contentWall .cwPreview{
-  position:absolute;
-  left:220px;
-  top:50%;
-  transform:translateY(-50%) translateX(-10px);
-  width:min(360px, 42vw);
-
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-
-  background: rgba(7,7,10,.55);
-  border:1px solid rgba(255,45,30,.35);
-  border-radius:16px;
-  padding:18px 20px;
-
-  box-shadow:
-    0 24px 46px rgba(0,0,0,.65),
-    inset 0 0 28px rgba(255,106,0,.12);
-
-  filter: blur(2px);
-  transition:
-    opacity .22s ease,
-    transform .22s ease,
-    filter .22s ease,
-    visibility 0s linear .22s;
-  z-index:2;
+.contentWall .cwPlay{
+  cursor: default !important;
 }
 
-/* Hover trigger */
-.contentWall .cwVisual:hover .cwPreview{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transform:translateY(-50%) translateX(0);
-  filter:blur(0);
-  transition-delay:0s;
+.contentWall .cwStats{
+  position:relative !important;
+  z-index:2 !important;
+  display:grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+  align-content:center !important;
 }
 
-/* Items animation */
-.contentWall .cwItem{
-  opacity:0;
-  transform:translateY(10px);
-  transition: opacity .2s ease, transform .2s ease;
-  font-size:14px;
-  line-height:1.6;
-  color:rgba(238,231,218,.9);
+.contentWall .contentWall__copy.cwCopy{
+  position:relative !important;
+  z-index:3 !important;
 }
 
-.contentWall .cwVisual:hover .cwItem{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.contentWall .cwItem + .cwItem{ margin-top:8px; }
-
-.contentWall .cwVisual:hover .cwItem:nth-child(1){ transition-delay:.05s }
-.contentWall .cwVisual:hover .cwItem:nth-child(2){ transition-delay:.10s }
-.contentWall .cwVisual:hover .cwItem:nth-child(3){ transition-delay:.15s }
-.contentWall .cwVisual:hover .cwItem:nth-child(4){ transition-delay:.20s }
-
-/* Mobile – no hover → always visible under play */
-@media (max-width: 900px){
-  .contentWall .cwPreview{
-    position:relative;
-    left:auto;
-    top:auto;
-    transform:none;
-    width:100%;
-    margin-top:16px;
-
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    filter:none;
+@media (max-width: 980px){
+  .contentWall .cwGrid.cwGrid--v3{
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+    text-align:center;
   }
-
-  .contentWall .cwItem{
-    opacity:1;
-    transform:none;
+  .contentWall .cwStats{
+    grid-template-columns: 1fr 1fr !important;
+    max-width: 520px;
+    margin: 0 auto;
   }
+  .contentWall .contentWall__copy.cwCopy{
+    max-width: 720px;
+    margin: 0 auto;
+    text-align:left;
+  }
+}
+@media (max-width: 560px){
+  .contentWall .cwStats{ grid-template-columns: 1fr !important; }
 }
