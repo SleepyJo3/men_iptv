@@ -1426,3 +1426,42 @@ header.topbar .brand .brand__tag{
     height:28px;
   }
 }
+
+/* HEADER BRAND OVERRIDES (FINAL) */
+.topbar .brand{
+  display:flex;
+  align-items:center;
+  gap:6px !important;              /* <-- LOGO + TEXT SPACING */
+}
+
+.topbar .brand__logo{
+  height:36px !important;          /* <-- DESKTOP SIZE */
+  width:auto !important;
+  display:block;
+  flex:0 0 auto;
+}
+
+.topbar .brand__text{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.topbar .brand__mark{
+  margin:0 !important;             /* <-- STOP RANDOM SHIFTS */
+  line-height:1.02 !important;
+}
+
+.topbar .brand__tag{
+  margin:0 !important;
+  line-height:1.1 !important;
+}
+
+.topbar .brand__men{ color:#fff !important; }
+.topbar .brand__iptv{ color: var(--accent, #ff5a2b) !important; }
+
+@media (max-width: 640px){
+  .topbar .brand__logo{
+    height:30px !important;        /* <-- MOBILE SIZE */
+  }
+}
