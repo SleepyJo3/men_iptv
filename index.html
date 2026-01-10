@@ -491,82 +491,44 @@ Magyarországon belül nem érhető el.</p>
 </section>
 
     <!-- CTA FOOTER -->
-    <section class="ctaFooter">
-      <div class="wrap ctaFooter__inner">
-        <div>
-          <div class="ctaFooter__title">READY TO SWITCH TO NO-LIMITS STREAMING?</div>
-          <div class="ctaFooter__sub">Order now — we reply fast.</div>
-        </div>
-        <a class="btn btn--primary" href="#order">ORDER NOW</a>
-      </div>
-    </section>
+<section class="ctaFooter">
+  <div class="wrap ctaFooter__inner">
+    <div>
+      <div class="ctaFooter__title">Kipróbálnád, mielőtt döntesz?</div>
+      <div class="ctaFooter__sub">Indíts 48 órás ingyenes próbát — utána választasz csomagot.</div>
+    </div>
 
-    <footer class="footer">
-      <div class="wrap footer__inner">
-        <div class="footer__left">© <span id="y"></span> MENIPTV</div>
-        <div class="footer__right">Support: Telegram / Email</div>
-      </div>
-    </footer>
-  </main>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+      <a class="btn btn--primary" href="app.html">INDÍTSD EL AZ INGYENES PRÓBÁT</a>
+      <a class="btn btn--ghost" href="#plans">CSOMAGOK</a>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+    <div class="footer__right">Support: Telegram / Email</div>
+  </div>
+</footer>
+</main>
 
-  <!-- IMPORTANT: RELATIVE PATH -->
-  <script src="assets/js/order.js?v=1"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      var contentWall = document.querySelector('.contentWall');
-      var play = document.querySelector('.contentWall .cwPlay');
-      var playNote = document.querySelector('.contentWall .cwPlayNote');
-      var preview = document.querySelector('.contentWall .cwPreview');
-      if(!play || !contentWall) return;
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-      function scrollToPlans(){
-        var sel = play.getAttribute('data-scroll') || '#plans';
-        var target = document.querySelector(sel);
-        if(!target) return;
-        var y = target.getBoundingClientRect().top + window.pageYOffset - 90;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-
-      function setPreviewState(isPreview){
-        contentWall.classList.toggle('is-preview', isPreview);
-        play.setAttribute('aria-label', isPreview ? 'Ugrás a csomagokhoz' : 'Előnézet megjelenítése');
-        if(preview){
-          preview.setAttribute('aria-hidden', isPreview ? 'false' : 'true');
-        }
-        if(playNote){
-          playNote.textContent = isPreview
-            ? 'Előnézet aktív — kattints újra a csomagokhoz'
-            : 'Élő kínálat – ízelítő';
-        }
-      }
-
-      function handlePlay(){
-        if(contentWall.classList.contains('is-preview')){
-          scrollToPlans();
-          return;
-        }
-        setPreviewState(true);
-      }
-
-      play.addEventListener('click', handlePlay);
-      play.addEventListener('keydown', function(e){
-        if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          handlePlay();
-        }
-      });
-
-      document.querySelectorAll('.js-scroll-plans').forEach(function(link){
-        link.addEventListener('click', function(e){
-          e.preventDefault();
-          scrollToPlans();
-        });
-      });
+  // Optional: smooth scroll to plans
+  document.querySelectorAll('a[href="#plans"], .js-scroll-plans').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const target = document.querySelector('#plans');
+      if(!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     });
-  </script>
+  });
+</script>
+
+<!-- IMPORTANT: RELATIVE PATH -->
+<script src="assets/js/order.js?v=1"></script>
 </body>
 </html>
