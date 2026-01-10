@@ -96,8 +96,13 @@
   </select>
 </label>
 
-<!-- FIX: minden csomag 3 eszköz / 1 háztartás -->
-<input type="hidden" name="devices" id="devices" value="3">
+<!-- FIX: minden csomag 3 eszköz / 1 háztartás (SELECT marad, csak rejtett) -->
+<label class="field isHidden" aria-hidden="true">
+  <span>Devices</span>
+  <select name="devices" id="devices">
+    <option value="3" selected>3</option>
+  </select>
+</label>
 
 <label class="field">
   <span>Tartalom</span>
@@ -109,14 +114,14 @@
   </select>
 </label>
 
-            <div class="row2">
-              <label class="field">
-                <span>Type</span>
-                <select name="type" id="type" required>
-                  <option value="New">New</option>
-                  <option value="Renewal">Renewal</option>
-                </select>
-              </label>
+<div class="row2">
+  <label class="field">
+    <span>Típus</span>
+    <select name="type" id="type" required>
+      <option value="New">Új</option>
+      <option value="Renewal">Megújítás</option>
+    </select>
+  </label>
 
               <label class="field">
                 <span>App / Device</span>
