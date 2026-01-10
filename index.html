@@ -79,31 +79,30 @@
 
         <aside class="orderBox" aria-label="Quick order">
           <div class="orderBox__head">
-            <div class="orderBox__title">Quick Order</div>
-            <div class="orderBox__sub">We reply fast • Setup guidance included</div>
+            <div class="orderBox__title">Gyors megrendelés</div>
+            <div class="orderBox__sub">Gyors visszajelzés • Beállítási segítség</div>
           </div>
 
           <form id="orderForm" class="orderForm" autocomplete="on">
             <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" />
+    
+<label class="field">
+  <span>Csomag</span>
+  <select name="plan" id="plan" required>
+    <option value="">Válassz csomagot</option>
+    <option value="1 Month">1 hónap • 22 € támogatás</option>
+    <option value="6 Months">6 hónap • 99 € támogatás</option>
+    <option value="12 Months">1 év • 219 € támogatás</option>
+  </select>
+</label>
 
             <label class="field">
-              <span>Plan</span>
-              <select name="plan" id="plan" required>
-                <option value="">Select plan</option>
-                <option value="1 Month">1 Month</option>
-                <option value="3 Months">3 Months</option>
-                <option value="6 Months">6 Months</option>
-                <option value="12 Months">12 Months</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Devices</span>
+              <span>Tartalom</span>
               <select name="devices" id="devices" required>
-                <option value="">Select devices</option>
-                <option value="1">1 Device</option>
-                <option value="2">2 Devices</option>
-                <option value="3">3 Devices</option>
+                <option value="">Válassz tartalmat</option>
+                <option value="1">Magyar</option>
+                <option value="2">Magyar és Felnőtt XXX</option>
+                <option value="3">Összes magyar és külföldi tartalom</option>
               </select>
             </label>
 
