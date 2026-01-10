@@ -13,19 +13,20 @@
   // ✅ MAKE WEBHOOK URL (API key auth will be OFF in Make)
   const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/ide_masold_a_make_urlt";
 
-  function buildMessage(data) {
-    const lines = [
-      "MENIPTV ORDER",
-      `Type: ${data.type}`,
-      `Plan: ${data.plan}`,
-      `Devices: ${data.devices}`,
-      data.app ? `App/Device: ${data.app}` : null,
-      data.renew_username ? `Renew Username: ${data.renew_username}` : null,
-      `Contact: ${data.contact}`,
-      `Time: ${new Date().toISOString()}`
-    ].filter(Boolean);
-    return lines.join("\n");
-  }
+function buildMessage(data) {
+  const lines = [
+    "📦 ÚJ MENIPTV RENDELÉS",
+    `Típus: ${data.type}`,
+    `Csomag: ${data.plan}`,
+    `Tartalom: ${data.devices}`, // <- csak szövegben átnevezve
+    data.app ? `App/Eszköz: ${data.app}` : null,
+    data.renew_username ? `Fiók neve: ${data.renew_username}` : null,
+    `Kapcsolat: ${data.contact}`,
+    `Idő: ${new Date().toISOString()}`
+  ].filter(Boolean);
+  return lines.join("\n");
+}
+
 
   function updateRenewUI() {
     const isRenew = typeEl.value === "Renewal";
