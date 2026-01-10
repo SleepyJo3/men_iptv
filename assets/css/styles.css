@@ -1859,3 +1859,12 @@ header.topbar .brand .brand__tag{
   .faqMore__text{ font-size: 14px; }
   .faqMore__cta{ display:none; } /* mobilon ne legyen zsúfolt */
 }
+.field.isHidden{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
