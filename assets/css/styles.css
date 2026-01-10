@@ -1804,3 +1804,58 @@ header.topbar .brand .brand__tag{
   color: rgba(255,236,214,.92);
   font-weight: 900;
 }
+/* FAQ "More" CTA – same design language as the FAQ cards */
+.faqMore{
+  margin-top: 14px;
+}
+
+.faqMore__link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  text-decoration:none;
+  background: linear-gradient(180deg, rgba(14,14,20,.72), rgba(8,8,12,.92));
+  border:1px solid rgba(255,45,30,.25);
+  box-shadow: 0 16px 30px rgba(0,0,0,.45), inset 0 0 24px rgba(255,45,30,.06);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.faqMore__link:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,45,30,.55);
+  box-shadow: 0 22px 40px rgba(0,0,0,.55), 0 0 18px rgba(255,45,30,.18);
+}
+
+.faqMore__text{
+  color: rgba(238,231,218,.82);
+  font-weight: 700;
+}
+
+.faqMore__cta{
+  margin-left:auto;
+  padding:8px 12px;
+  border-radius:999px;
+  background: rgba(10,10,14,.65);
+  border:1px solid rgba(255,45,30,.35);
+  color: rgba(238,231,218,.92);
+  font-weight: 900;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+  box-shadow: inset 0 0 14px rgba(255,45,30,.10);
+}
+
+.faqMore__arrow{
+  color: rgba(255,106,0,.95);
+  font-weight: 900;
+  font-size: 18px;
+  text-shadow: 0 0 14px rgba(255,106,0,.25);
+}
+
+@media (max-width: 520px){
+  .faqMore__text{ font-size: 14px; }
+  .faqMore__cta{ display:none; } /* mobilon ne legyen zsúfolt */
+}
