@@ -1791,3 +1791,16 @@ header.topbar .brand .brand__tag{
       rgba(0,0,0,.45) 100%
     );
 }
+
+/* Plans risk-reducer microcopy */
+#plans .plansNote{
+  margin: 8px 0 22px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(238,231,218,.72);
+  max-width: 62ch;
+}
+#plans .plansNote strong{
+  color: rgba(255,236,214,.92);
+  font-weight: 900;
+}
