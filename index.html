@@ -96,15 +96,18 @@
   </select>
 </label>
 
-            <label class="field">
-              <span>Tartalom</span>
-              <select name="devices" id="devices" required>
-                <option value="">Válassz tartalmat</option>
-                <option value="1">Magyar</option>
-                <option value="2">Magyar és Felnőtt XXX</option>
-                <option value="3">Összes magyar és külföldi tartalom</option>
-              </select>
-            </label>
+<!-- FIX: minden csomag 3 eszköz / 1 háztartás -->
+<input type="hidden" name="devices" id="devices" value="3">
+
+<label class="field">
+  <span>Tartalom</span>
+  <select name="content" id="content" required>
+    <option value="">Válassz tartalmat</option>
+    <option value="Magyar">Magyar csatornák</option>
+    <option value="Magyar + Felnőtt">Magyar + Felnőtt (18+)</option>
+    <option value="Magyar + Külföldi">Magyar + Külföldi csatornák</option>
+  </select>
+</label>
 
             <div class="row2">
               <label class="field">
