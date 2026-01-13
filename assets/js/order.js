@@ -7,7 +7,7 @@
     language: "hu", // "hu" | "en" | "pl"
 
     telegramUsername: "BigBoxTV",
-    makeWebhookUrl: "https://hook.eu2.make.com/gyqm31rv0l0kbvk4vzlv91nbo696ha8q"
+    makeWebhookUrl: "https://hook.eu2.make.com/ide_ird_a_kodot"
   };
 
   /* =========================
