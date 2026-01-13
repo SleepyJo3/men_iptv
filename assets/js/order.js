@@ -93,6 +93,7 @@
   const renewInput = document.getElementById("renew_username");
   const telegramCopy = document.getElementById("copyOrderMsg");
   const telegramOpen = document.getElementById("openTelegram");
+  const telegramFallback = document.getElementById("tgFallback");
   const companyEl = document.getElementById("company");
 
   if (!form || !statusEl || !typeEl || !renewField || !renewInput) return;
@@ -178,6 +179,9 @@
      ========================= */
   updateRenewUI();
   updateTelegramFallback(getFormData());
+  if (telegramFallback) {
+    telegramFallback.classList.add("hidden");
+  }
 
   typeEl.addEventListener("change", () => {
     updateRenewUI();
@@ -223,6 +227,9 @@
 
     try {
       statusEl.textContent = T.sending;
+      if (telegramFallback) {
+        telegramFallback.classList.add("hidden");
+      }
 
       const payloadObj = {
         ...data,
@@ -244,16 +251,27 @@
       });
 
       if (!res.ok) {
-        statusEl.textContent = T.errors.sendFail;
+        statusEl.textContent =
+          "Nem sikerült automatikusan elküldeni. Másold ki a megrendelést, majd illeszd be Telegramon.";
+        if (telegramFallback) {
+          telegramFallback.classList.remove("hidden");
+        }
         return;
       }
 
       statusEl.textContent = T.success;
+      if (telegramFallback) {
+        telegramFallback.classList.add("hidden");
+      }
       form.reset();
       updateRenewUI();
       updateTelegramFallback(getFormData());
     } catch {
-      statusEl.textContent = T.errors.network;
+      statusEl.textContent =
+        "Nem sikerült automatikusan elküldeni. Másold ki a megrendelést, majd illeszd be Telegramon.";
+      if (telegramFallback) {
+        telegramFallback.classList.remove("hidden");
+      }
     }
   });
 })();
