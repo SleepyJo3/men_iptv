@@ -91,12 +91,11 @@
   const typeEl = document.getElementById("type");
   const renewField = document.getElementById("renewUserField");
   const renewInput = document.getElementById("renew_username");
-  const telegramPrefill = document.getElementById("telegramPrefill");
-  const telegramCopy = document.getElementById("telegramCopy");
-  const telegramOpen = document.getElementById("telegramOpen");
+  const telegramCopy = document.getElementById("copyOrderMsg");
+  const telegramOpen = document.getElementById("openTelegram");
   const companyEl = document.getElementById("company");
 
-  if (!form || !statusEl || !typeEl || !renewField || !renewInput || !telegramPrefill) return;
+  if (!form || !statusEl || !typeEl || !renewField || !renewInput) return;
 
   /* =========================
      HELPERS
@@ -127,21 +126,7 @@
     if (!isRenew) renewInput.value = "";
   }
 
-  function setTelegramPrefill(data) {
-    const text = encodeURIComponent(buildMessage(data));
-
-    const deepLink = `tg://resolve?domain=${CONFIG.telegramUsername}&text=${text}`;
-    const webFallback = `https://t.me/share/url?url=&text=${text}`;
-
-    telegramPrefill.href = deepLink;
-    telegramPrefill.setAttribute("data-fallback", webFallback);
-
-    /* TELEGRAM FALLBACK */
-    setTelegramFallback(data);
-  }
-
-  /* TELEGRAM FALLBACK */
-  function setTelegramFallback(data) {
+  function updateTelegramFallback(data) {
     if (telegramCopy) {
       telegramCopy.setAttribute("data-message", buildMessage(data));
     }
@@ -188,33 +173,22 @@
     });
   }
 
-  telegramPrefill.addEventListener("click", () => {
-    const fallback = telegramPrefill.getAttribute("data-fallback");
-    if (!fallback) return;
-
-    setTimeout(() => {
-      try {
-        window.location.href = fallback;
-      } catch (_) {}
-    }, 600);
-  });
-
   /* =========================
      INIT
      ========================= */
   updateRenewUI();
-  setTelegramPrefill(getFormData());
+  updateTelegramFallback(getFormData());
 
   typeEl.addEventListener("change", () => {
     updateRenewUI();
-    setTelegramPrefill(getFormData());
+    updateTelegramFallback(getFormData());
   });
 
   ["plan", "devices", "type", "app", "contact", "renew_username"].forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const handler = () => setTelegramPrefill(getFormData());
+    const handler = () => updateTelegramFallback(getFormData());
     el.addEventListener("input", handler);
     el.addEventListener("change", handler);
   });
@@ -235,17 +209,17 @@
 
     if (!data.plan || !data.devices || !data.type || !data.contact) {
       statusEl.textContent = T.errors.required;
-      setTelegramPrefill(data);
+      updateTelegramFallback(data);
       return;
     }
 
     if (data.type === "Renewal" && !data.renew_username) {
       statusEl.textContent = T.errors.renew;
-      setTelegramPrefill(data);
+      updateTelegramFallback(data);
       return;
     }
 
-    setTelegramPrefill(data);
+    updateTelegramFallback(data);
 
     try {
       statusEl.textContent = T.sending;
@@ -277,7 +251,7 @@
       statusEl.textContent = T.success;
       form.reset();
       updateRenewUI();
-      setTelegramPrefill(getFormData());
+      updateTelegramFallback(getFormData());
     } catch {
       statusEl.textContent = T.errors.network;
     }
