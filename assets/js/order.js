@@ -28,9 +28,9 @@
         renew: "Megújításhoz add meg a meglévő fiók nevét.",
         generic: "Hiba. Kérjük próbáld újra.",
         sendFail:
-          "Nem sikerült elküldeni. Nyisd meg a Telegramot és küldd el az előre kitöltött üzenetet.",
+          "Nem sikerült elküldeni. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés",
         network:
-          "Hálózati hiba. Nyisd meg a Telegramot és küldd el az előre kitöltött üzenetet."
+          "Hálózati hiba. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés"
       },
       sending: "Küldés…",
       success: "✅ Rendelés elküldve! Hamarosan válaszolunk."
@@ -50,9 +50,9 @@
         renew: "Please enter your existing account name.",
         generic: "Error. Please try again.",
         sendFail:
-          "Send failed. Open Telegram and send the prefilled message.",
+          "Send failed. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés",
         network:
-          "Network error. Open Telegram and send the prefilled message."
+          "Network error. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés"
       },
       sending: "Sending…",
       success: "✅ Order sent! We’ll reply shortly."
@@ -72,9 +72,9 @@
         renew: "Podaj nazwę istniejącego konta.",
         generic: "Błąd. Spróbuj ponownie.",
         sendFail:
-          "Nie udało się wysłać. Otwórz Telegram i wyślij przygotowaną wiadomość.",
+          "Nie udało się wysłać. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés",
         network:
-          "Błąd sieci. Otwórz Telegram i wyślij przygotowaną wiadomość."
+          "Błąd sieci. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés"
       },
       sending: "Wysyłanie…",
       success: "✅ Zamówienie wysłane! Wkrótce odpowiemy."
@@ -92,6 +92,8 @@
   const renewField = document.getElementById("renewUserField");
   const renewInput = document.getElementById("renew_username");
   const telegramPrefill = document.getElementById("telegramPrefill");
+  const telegramCopy = document.getElementById("telegramCopy");
+  const telegramOpen = document.getElementById("telegramOpen");
   const companyEl = document.getElementById("company");
 
   if (!form || !statusEl || !typeEl || !renewField || !renewInput || !telegramPrefill) return;
@@ -133,6 +135,57 @@
 
     telegramPrefill.href = deepLink;
     telegramPrefill.setAttribute("data-fallback", webFallback);
+
+    /* TELEGRAM FALLBACK */
+    setTelegramFallback(data);
+  }
+
+  /* TELEGRAM FALLBACK */
+  function setTelegramFallback(data) {
+    if (telegramCopy) {
+      telegramCopy.setAttribute("data-message", buildMessage(data));
+    }
+    if (telegramOpen) {
+      telegramOpen.href = `https://t.me/${CONFIG.telegramUsername}`;
+    }
+  }
+
+  async function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "absolute";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
+
+    let success = false;
+    try {
+      success = document.execCommand("copy");
+    } catch (_) {
+      success = false;
+    }
+
+    document.body.removeChild(textarea);
+    return success;
+  }
+
+  if (telegramCopy) {
+    telegramCopy.addEventListener("click", async () => {
+      const message =
+        telegramCopy.getAttribute("data-message") || buildMessage(getFormData());
+      await copyToClipboard(message);
+    });
   }
 
   telegramPrefill.addEventListener("click", () => {
