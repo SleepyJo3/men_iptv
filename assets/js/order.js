@@ -6,12 +6,10 @@
   const renewInput = document.getElementById("renew_username");
   const telegramPrefill = document.getElementById("telegramPrefill");
 
-  // OPTIONAL: your Telegram public username OR bot deep link for prefill fallback
-  // ✅ IMPORTANT: no "@" in the URL
   const TELEGRAM_PUBLIC_LINK = "https://t.me/RepGemS";
-
-  // ✅ MAKE WEBHOOK URL (API key auth will be OFF in Make)
   const MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/ide_masold_a_make_urlt";
+
+  const trackedFields = ["plan", "devices", "type", "app", "contact", "renew_username"];
 
   function buildMessage(data) {
     const lines = [
@@ -24,6 +22,7 @@
       `Contact: ${data.contact}`,
       `Time: ${new Date().toISOString()}`
     ].filter(Boolean);
+
     return lines.join("\n");
   }
 
@@ -41,22 +40,23 @@
   updateRenewUI();
   typeEl.addEventListener("change", updateRenewUI);
 
-  ["plan", "devices", "type", "app", "contact", "renew_username"].forEach((id) => {
+  trackedFields.forEach((id) => {
     const el = document.getElementById(id);
     if (!el) return;
+
     const handler = () => {
       const data = Object.fromEntries(new FormData(form).entries());
       setTelegramPrefill(data);
     };
+
     el.addEventListener("input", handler);
     el.addEventListener("change", handler);
   });
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
     statusEl.textContent = "";
 
-    // Honeypot
     if ((document.getElementById("company").value || "").trim() !== "") {
       statusEl.textContent = "Error. Please try again.";
       return;
@@ -68,6 +68,7 @@
       statusEl.textContent = "Please fill required fields.";
       return;
     }
+
     if (data.type === "Renewal" && !data.renew_username) {
       statusEl.textContent = "Please add your renewal username.";
       return;
@@ -78,8 +79,6 @@
     try {
       statusEl.textContent = "Sending…";
 
-      // ✅ SOLUTION A: "simple" POST to avoid CORS preflight issues
-      // Send as application/x-www-form-urlencoded
       const payloadObj = {
         ...data,
         message: buildMessage(data),
@@ -87,8 +86,8 @@
       };
 
       const payload = new URLSearchParams();
-      Object.entries(payloadObj).forEach(([k, v]) => {
-        payload.append(k, String(v ?? ""));
+      Object.entries(payloadObj).forEach(([key, value]) => {
+        payload.append(key, String(value ?? ""));
       });
 
       const res = await fetch(MAKE_WEBHOOK_URL, {
@@ -100,8 +99,7 @@
       });
 
       if (!res.ok) {
-        statusEl.textContent =
-          "Send failed. Open Telegram and send the prefilled message.";
+        statusEl.textContent = "Send failed. Open Telegram and send the prefilled message.";
         return;
       }
 
@@ -109,8 +107,7 @@
       form.reset();
       updateRenewUI();
     } catch (err) {
-      statusEl.textContent =
-        "Network error. Open Telegram and send the prefilled message.";
+      statusEl.textContent = "Network error. Open Telegram and send the prefilled message.";
     }
   });
 })();
