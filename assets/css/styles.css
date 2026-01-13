@@ -614,6 +614,12 @@ a {
   width: 100%;
 }
 
+#tgFallback .btn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
 .orderForm .btn--primary {
   width: 100%;
   margin-top: 14px;
