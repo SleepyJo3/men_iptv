@@ -285,6 +285,12 @@ a {
   border-color: rgba(255, 45, 30, 0.55);
 }
 
+.is-copied {
+  opacity: 0.85;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 .btn--telegram {
   margin-top: 10px;
   width: 100%;

@@ -91,7 +91,7 @@
   const typeEl = document.getElementById("type");
   const renewField = document.getElementById("renewUserField");
   const renewInput = document.getElementById("renew_username");
-  const telegramCopy = document.getElementById("copyOrderMsg");
+  const telegramCopy = document.getElementById("copyOrderBtn");
   const telegramOpen = document.getElementById("openTelegram");
   const telegramFallback = document.getElementById("tgFallback");
   const companyEl = document.getElementById("company");
@@ -136,41 +136,28 @@
     }
   }
 
-  async function copyToClipboard(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      try {
-        await navigator.clipboard.writeText(text);
-        return true;
-      } catch (_) {
-        return false;
-      }
-    }
-
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "absolute";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    textarea.setSelectionRange(0, textarea.value.length);
-
-    let success = false;
-    try {
-      success = document.execCommand("copy");
-    } catch (_) {
-      success = false;
-    }
-
-    document.body.removeChild(textarea);
-    return success;
-  }
-
   if (telegramCopy) {
+    const originalCopyText = telegramCopy.textContent || "Megrendelés másolása";
+
     telegramCopy.addEventListener("click", async () => {
       const message =
         telegramCopy.getAttribute("data-message") || buildMessage(getFormData());
-      await copyToClipboard(message);
+
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(message);
+        } catch (_) {
+          // Silently fail
+        }
+      }
+
+      telegramCopy.textContent = "✔ Másolva";
+      telegramCopy.classList.add("is-copied");
+
+      window.setTimeout(() => {
+        telegramCopy.textContent = originalCopyText;
+        telegramCopy.classList.remove("is-copied");
+      }, 2000);
     });
   }
 
