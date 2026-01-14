@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+    <link rel="stylesheet" href="assets/css/pages/thank-you.css?v=1" />
   </head>
 
   <body>
@@ -65,6 +66,14 @@
           <h2>KÖVETKEZŐ LÉPÉSEK</h2>
           <p class="lead">Rövid ellenőrzések, hogy minden zökkenőmentesen folytatódjon.</p>
 
+          <div class="card is-hidden" id="renewalNotice" hidden>
+            <h3 class="card__title">Megújítási tájékoztató (48 óra)</h3>
+            <p class="card__text">
+              Ha a legutóbbi rendelésed megújítás volt, 48 órán belül küldjük a további teendőket és az aktiválás
+              részleteit.
+            </p>
+          </div>
+
           <div class="cards3">
             <div class="card">
               <h3 class="card__title">Ellenőrizd az e-mail fiókodat</h3>
@@ -103,8 +112,6 @@
       </footer>
     </main>
 
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
+    <script src="assets/js/thank-you.js?v=1" defer></script>
   </body>
 </html>
