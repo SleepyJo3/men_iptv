@@ -1,5 +1,465 @@
 (() => {
   /* =========================
+     CONFIG
+     ========================= */
+  const CONFIG = {
+    brand: "MENIPTV",
+    language: "hu", // "hu" | "en" | "pl"
+    telegramUsername: "BigBoxTV",
+    makeWebhookUrl: "https://hook.eu2.make.com/ide_masold_make_code",
+
+    // redirect
+    thankYouUrl: "thank-you.html",
+    redirectDelayMs: 2500,
+
+    // sessionStorage key
+    sessionKey: "meniptv_last_order"
+  };
+
+  /* =========================
+     I18N
+     ========================= */
+  const I18N = {
+    hu: {
+      sending: "Küldés…",
+      success: "✅ Rendelés elküldve! Néhány másodpercen belül továbbítunk…",
+      errors: {
+        required: "Kérjük töltsd ki a kötelező mezőket.",
+        renew: "Megújításhoz add meg a meglévő fiók nevét.",
+        generic: "Hiba. Kérjük próbáld újra.",
+        sendFail:
+          "Nem sikerült automatikusan elküldeni. Nyisd meg a Telegramot és küldd el az üzenetet.",
+        network:
+          "Hálózati hiba. Nyisd meg a Telegramot és küldd el az üzenetet."
+      }
+    }
+  };
+  const T = I18N[CONFIG.language] || I18N.hu;
+
+  /* =========================
+     DOM HOOKS
+     ========================= */
+  const form = document.getElementById("orderForm");
+  const statusEl = document.getElementById("status");
+  const typeEl = document.getElementById("type");
+  const renewField = document.getElementById("renewUserField");
+  const renewInput = document.getElementById("renew_username");
+  const companyEl = document.getElementById("company");
+
+  // Old version (prefill link)
+  const telegramPrefill = document.getElementById("telegramPrefill");
+
+  // New version (copy/open/fallback)
+  const telegramCopy = document.getElementById("copyOrderBtn");
+  const telegramOpen = document.getElementById("openTelegram");
+  const telegramFallback = document.getElementById("tgFallback");
+
+  // Minimal required elements
+  if (!form || !statusEl || !typeEl || !renewField || !renewInput) return;
+
+  /* =========================
+     HELPERS
+     ========================= */
+  function getFormData() {
+    return Object.fromEntries(new FormData(form).entries());
+  }
+
+  function buildMessage(data) {
+    const lines = [
+      `📦 ÚJ ${CONFIG.brand} RENDELÉS`,
+      `Típus: ${data.type || ""}`,
+      `Csomag: ${data.plan || ""}`,
+      `Tartalom: ${data.devices || ""}`,
+      data.app ? `App/Eszköz: ${data.app}` : null,
+      data.renew_username ? `Fiók neve: ${data.renew_username}` : null,
+      `Kapcsolat: ${data.contact || ""}`,
+      `Idő: ${new Date().toISOString()}`
+    ].filter(Boolean);
+
+    return lines.join("\n");
+  }
+
+  function updateRenewUI() {
+    const isRenew = typeEl.value === "Renewal";
+    renewField.classList.toggle("hidden", !isRenew);
+    renewInput.required = isRenew;
+    if (!isRenew) renewInput.value = "";
+  }
+
+  function setTelegramPrefillLink(data) {
+    if (!telegramPrefill) return;
+
+    const text = encodeURIComponent(buildMessage(data));
+    const deepLink = `tg://resolve?domain=${CONFIG.telegramUsername}&text=${text}`;
+    const webFallback = `https://t.me/share/url?url=&text=${text}`;
+
+    telegramPrefill.href = deepLink;
+    telegramPrefill.setAttribute("data-fallback", webFallback);
+  }
+
+  function setTelegramCopyOpenFallback(data) {
+    const msg = buildMessage(data);
+
+    if (telegramCopy) telegramCopy.setAttribute("data-message", msg);
+    if (telegramOpen) telegramOpen.href = `https://t.me/${CONFIG.telegramUsername}`;
+
+    // ha van egy fallback dobozod, alapból rejtsük
+    if (telegramFallback) telegramFallback.classList.add("hidden");
+  }
+
+  function updateTelegramUI(data) {
+    // támogatjuk mindkét rendszert
+    setTelegramPrefillLink(data);
+    setTelegramCopyOpenFallback(data);
+  }
+
+  function showTelegramFallback() {
+    // új UI-nál
+    if (telegramFallback) telegramFallback.classList.remove("hidden");
+  }
+
+  function persistForThankYou(data) {
+    const payload = {
+      ...data,
+      brand: CONFIG.brand,
+      lang: CONFIG.language,
+      savedAt: new Date().toISOString()
+    };
+
+    try {
+      sessionStorage.setItem(CONFIG.sessionKey, JSON.stringify(payload));
+    } catch (_) {
+      // ignore
+    }
+  }
+
+  function redirectToThankYou() {
+    window.setTimeout(() => {
+      window.location.href = CONFIG.thankYouUrl;
+    }, CONFIG.redirectDelayMs);
+  }
+
+  /* =========================
+     TELEGRAM UI EVENTS
+     ========================= */
+
+  // Old prefill click fallback (tg:// blocked -> web fallback)
+  if (telegramPrefill) {
+    telegramPrefill.addEventListener("click", () => {
+      const fallback = telegramPrefill.getAttribute("data-fallback");
+      if (!fallback) return;
+      setTimeout(() => {
+        try {
+          window.location.href = fallback;
+        } catch (_) {}
+      }, 600);
+    });
+  }
+
+  // New copy button behavior (optional)
+  if (telegramCopy) {
+    const original = telegramCopy.textContent || "Megrendelés másolása";
+    telegramCopy.addEventListener("click", async () => {
+      const msg = telegramCopy.getAttribute("data-message") || buildMessage(getFormData());
+      try {
+        await navigator.clipboard?.writeText?.(msg);
+      } catch (_) {}
+      telegramCopy.textContent = "✔ Másolva";
+      telegramCopy.classList.add("is-copied");
+      setTimeout(() => {
+        telegramCopy.textContent = original;
+        telegramCopy.classList.remove("is-copied");
+      }, 2000);
+    });
+  }
+
+  /* =========================
+     INIT
+     ========================= */
+  updateRenewUI();
+  updateTelegramUI(getFormData());
+
+  typeEl.addEventListener("change", () => {
+    updateRenewUI();
+    updateTelegramUI(getFormData());
+  });
+
+  ["plan", "devices", "type", "app", "contact", "renew_username"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const handler = () => updateTelegramUI(getFormData());
+    el.addEventListener("input", handler);
+    el.addEventListener("change", handler);
+  });
+
+  /* =========================
+     SUBMIT
+     ========================= */
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "";
+
+    // Honeypot
+    if (companyEl && (companyEl.value || "").trim() !== "") {
+      statusEl.textContent = T.errors.generic;
+      return;
+    }
+
+    const data = getFormData();
+
+    if (!data.plan || !data.devices || !data.type || !data.contact) {
+      statusEl.textContent = T.errors.required;
+      updateTelegramUI(data);
+      return;
+    }
+
+    if (data.type === "Renewal" && !data.renew_username) {
+      statusEl.textContent = T.errors.renew;
+      updateTelegramUI(data);
+      return;
+    }
+
+    updateTelegramUI(data);
+
+    try {
+      statusEl.textContent = T.sending;
+
+      const payloadObj = {
+        ...data,
+        message: buildMessage(data),
+        source: "website",
+        brand: CONFIG.brand,
+        lang: CONFIG.language
+      };
+
+      const payload = new URLSearchParams();
+      Object.entries(payloadObj).forEach(([k, v]) => payload.append(k, String(v ?? "")));
+
+      const res = await fetch(CONFIG.makeWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: payload.toString()
+      });
+
+      if (!res.ok) {
+        statusEl.textContent = T.errors.sendFail;
+        showTelegramFallback();
+        return;
+      }
+
+      // ✅ siker
+      statusEl.textContent = T.success;
+
+      // mentsük a thank-you oldalnak (ellenőrzéshez / javításhoz)
+      persistForThankYou(data);
+
+      // reset form
+      form.reset();
+      updateRenewUI();
+      updateTelegramUI(getFormData());
+
+      // ✅ redirect késleltetéssel
+      redirectToThankYou();
+    } catch (_) {
+      statusEl.textContent = T.errors.network;
+      showTelegramFallback();
+    }
+  });
+})();
+      `Kapcsolat: ${data.contact || ""}`,
+      `Idő: ${new Date().toISOString()}`
+    ].filter(Boolean);
+
+    return lines.join("\n");
+  }
+
+  function updateRenewUI() {
+    const isRenew = typeEl.value === "Renewal";
+    renewField.classList.toggle("hidden", !isRenew);
+    renewInput.required = isRenew;
+    if (!isRenew) renewInput.value = "";
+  }
+
+  function setTelegramPrefillLink(data) {
+    if (!telegramPrefill) return;
+
+    const text = encodeURIComponent(buildMessage(data));
+    const deepLink = `tg://resolve?domain=${CONFIG.telegramUsername}&text=${text}`;
+    const webFallback = `https://t.me/share/url?url=&text=${text}`;
+
+    telegramPrefill.href = deepLink;
+    telegramPrefill.setAttribute("data-fallback", webFallback);
+  }
+
+  function setTelegramCopyOpenFallback(data) {
+    const msg = buildMessage(data);
+
+    if (telegramCopy) telegramCopy.setAttribute("data-message", msg);
+    if (telegramOpen) telegramOpen.href = `https://t.me/${CONFIG.telegramUsername}`;
+
+    // ha van egy fallback dobozod, alapból rejtsük
+    if (telegramFallback) telegramFallback.classList.add("hidden");
+  }
+
+  function updateTelegramUI(data) {
+    // támogatjuk mindkét rendszert
+    setTelegramPrefillLink(data);
+    setTelegramCopyOpenFallback(data);
+  }
+
+  function showTelegramFallback() {
+    // új UI-nál
+    if (telegramFallback) telegramFallback.classList.remove("hidden");
+  }
+
+  function persistForThankYou(data) {
+    const payload = {
+      ...data,
+      brand: CONFIG.brand,
+      lang: CONFIG.language,
+      savedAt: new Date().toISOString()
+    };
+
+    try {
+      sessionStorage.setItem(CONFIG.sessionKey, JSON.stringify(payload));
+    } catch (_) {
+      // ignore
+    }
+  }
+
+  function redirectToThankYou() {
+    window.setTimeout(() => {
+      window.location.href = CONFIG.thankYouUrl;
+    }, CONFIG.redirectDelayMs);
+  }
+
+  /* =========================
+     TELEGRAM UI EVENTS
+     ========================= */
+
+  // Old prefill click fallback (tg:// blocked -> web fallback)
+  if (telegramPrefill) {
+    telegramPrefill.addEventListener("click", () => {
+      const fallback = telegramPrefill.getAttribute("data-fallback");
+      if (!fallback) return;
+      setTimeout(() => {
+        try {
+          window.location.href = fallback;
+        } catch (_) {}
+      }, 600);
+    });
+  }
+
+  // New copy button behavior (optional)
+  if (telegramCopy) {
+    const original = telegramCopy.textContent || "Megrendelés másolása";
+    telegramCopy.addEventListener("click", async () => {
+      const msg = telegramCopy.getAttribute("data-message") || buildMessage(getFormData());
+      try {
+        await navigator.clipboard?.writeText?.(msg);
+      } catch (_) {}
+      telegramCopy.textContent = "✔ Másolva";
+      telegramCopy.classList.add("is-copied");
+      setTimeout(() => {
+        telegramCopy.textContent = original;
+        telegramCopy.classList.remove("is-copied");
+      }, 2000);
+    });
+  }
+
+  /* =========================
+     INIT
+     ========================= */
+  updateRenewUI();
+  updateTelegramUI(getFormData());
+
+  typeEl.addEventListener("change", () => {
+    updateRenewUI();
+    updateTelegramUI(getFormData());
+  });
+
+  ["plan", "devices", "type", "app", "contact", "renew_username"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const handler = () => updateTelegramUI(getFormData());
+    el.addEventListener("input", handler);
+    el.addEventListener("change", handler);
+  });
+
+  /* =========================
+     SUBMIT
+     ========================= */
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    statusEl.textContent = "";
+
+    // Honeypot
+    if (companyEl && (companyEl.value || "").trim() !== "") {
+      statusEl.textContent = T.errors.generic;
+      return;
+    }
+
+    const data = getFormData();
+
+    if (!data.plan || !data.devices || !data.type || !data.contact) {
+      statusEl.textContent = T.errors.required;
+      updateTelegramUI(data);
+      return;
+    }
+
+    if (data.type === "Renewal" && !data.renew_username) {
+      statusEl.textContent = T.errors.renew;
+      updateTelegramUI(data);
+      return;
+    }
+
+    updateTelegramUI(data);
+
+    try {
+      statusEl.textContent = T.sending;
+
+      const payloadObj = {
+        ...data,
+        message: buildMessage(data),
+        source: "website",
+        brand: CONFIG.brand,
+        lang: CONFIG.language
+      };
+
+      const payload = new URLSearchParams();
+      Object.entries(payloadObj).forEach(([k, v]) => payload.append(k, String(v ?? "")));
+
+      const res = await fetch(CONFIG.makeWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: payload.toString()
+      });
+
+      if (!res.ok) {
+        statusEl.textContent = T.errors.sendFail;
+        showTelegramFallback();
+        return;
+      }
+
+      // ✅ siker
+      statusEl.textContent = T.success;
+
+      // mentsük a thank-you oldalnak (ellenőrzéshez / javításhoz)
+      persistForThankYou(data);
+
+      // reset form
+      form.reset();
+      updateRenewUI();
+      updateTelegramUI(getFormData());
+
+      // ✅ redirect késleltetéssel
+      redirectToThankYou();
+    } catch (_) {
+      statusEl.textContent = T.errors.network;
+      showTelegramFallback();
+    }
+  });
+})();
      WHITE-LABEL CONFIG
      ========================= */
   const CONFIG = {
