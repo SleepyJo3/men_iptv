@@ -50,9 +50,9 @@
         renew: "Please enter your existing account name.",
         generic: "Error. Please try again.",
         sendFail:
-          "Send failed. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés",
+          "Send failed. Copy message → Open Telegram → Paste → Send",
         network:
-          "Network error. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés"
+          "Network error. Copy message → Open Telegram → Paste → Send"
       },
       sending: "Sending…",
       success: "✅ Order sent! We’ll reply shortly."
@@ -72,9 +72,9 @@
         renew: "Podaj nazwę istniejącego konta.",
         generic: "Błąd. Spróbuj ponownie.",
         sendFail:
-          "Nie udało się wysłać. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés",
+          "Nie udało się wysłać. Skopiuj wiadomość → Otwórz Telegram → Wklej → Wyślij",
         network:
-          "Błąd sieci. Üzenet másolása → Telegram megnyitása → Beillesztés → Küldés"
+          "Błąd sieci. Skopiuj wiadomość → Otwórz Telegram → Wklej → Wyślij"
       },
       sending: "Wysyłanie…",
       success: "✅ Zamówienie wysłane! Wkrótce odpowiemy."
