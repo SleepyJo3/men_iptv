@@ -137,6 +137,17 @@ a {
 }
 
 /* =========================
+   Thank-you page additions
+   ========================= */
+.thankYouHero {
+  padding: 80px 0 40px;
+}
+
+.thankYouHero__copy {
+  max-width: 640px;
+}
+
+/* =========================
    Header / Nav
    ========================= */
 .topbar {
