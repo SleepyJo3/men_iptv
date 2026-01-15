@@ -1,16 +1,4 @@
 .infoPage {
-  --bg1: #0b0d14;
-  --bg2: #0f1220;
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.68);
-  --muted2: rgba(255, 255, 255, 0.52);
-  --cardA: rgba(255, 255, 255, 0.07);
-  --cardB: rgba(255, 255, 255, 0.045);
-  --stroke: rgba(255, 255, 255, 0.1);
-  --btn1: #3b79ff;
-  --btn2: #2b66ff;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  --radius: 18px;
   --max: 1100px;
 }
 
@@ -81,6 +69,7 @@
   font-size: 22px;
   letter-spacing: -0.01em;
   font-weight: 800;
+  color: var(--accent);
 }
 
 .infoPage .infoWrap .cardGrid {
@@ -91,16 +80,17 @@
 
 .infoPage .infoWrap .appCard {
   position: relative;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--cardA), var(--cardB));
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(10, 10, 14, 0.98), rgba(4, 4, 8, 0.98));
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 45, 30, 0.12);
   overflow: hidden;
   padding: 18px 18px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-height: 280px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .infoPage .infoWrap .appCard::before {
@@ -108,9 +98,9 @@
   position: absolute;
   inset: -2px;
   background:
-    radial-gradient(260px 140px at 20% 0%, rgba(75, 110, 255, 0.26), transparent 60%),
-    radial-gradient(260px 140px at 80% 0%, rgba(70, 200, 255, 0.16), transparent 60%);
-  opacity: 0.35;
+    radial-gradient(240px 140px at 18% 18%, rgba(255, 45, 30, 0.12), transparent 60%),
+    radial-gradient(260px 160px at 85% 20%, rgba(255, 106, 0, 0.1), transparent 62%);
+  opacity: 0.9;
   pointer-events: none;
 }
 
@@ -133,13 +123,16 @@
 }
 
 .infoPage .infoWrap .appLogo {
-  width: 84px;
-  height: 84px;
-  padding: 10px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.3);
+  width: 112px;
+  height: 112px;
+  padding: 12px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.45),
+    inset 0 0 16px rgba(255, 255, 255, 0.08),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +141,7 @@
 }
 
 .infoPage .infoWrap .appLogo.isRound {
-  border-radius: 999px;
+  border-radius: 22px;
 }
 
 .infoPage .infoWrap .appLogo img {
@@ -220,38 +213,15 @@
 }
 
 .infoPage .infoWrap .btn {
-  appearance: none;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  min-width: 110px;
-  border-radius: 10px;
-  font-weight: 800;
   font-size: 13px;
-  color: #fff;
-  background: linear-gradient(180deg, var(--btn1), var(--btn2));
-  box-shadow: 0 10px 18px rgba(43, 102, 255, 0.25);
-  transition: transform 0.12s ease, filter 0.12s ease;
+  padding: 10px 14px;
   white-space: nowrap;
 }
 
-.infoPage .infoWrap .btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.03);
-}
-
-.infoPage .infoWrap .btn:active {
-  transform: translateY(0);
-  filter: brightness(0.98);
-}
-
-.infoPage .infoWrap .btn:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.6);
-  outline-offset: 2px;
+.infoPage .infoWrap .appCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: 0 26px 48px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 45, 30, 0.35);
 }
 
 .infoPage .infoWrap .kv {

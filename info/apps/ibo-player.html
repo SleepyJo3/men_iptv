@@ -128,13 +128,13 @@
     <article class="appCard">
       <h3 class="appName">Beállítási útmutató</h3>
       <p class="appDesc">Készen állsz a beállításra? Kövesd a rövid útmutatót.</p>
-      <a class="btn" href="../guide/ibo-player-beallitas.html">Megnyitás</a>
+      <a class="btn btn--primary" href="../guide/ibo-player-beallitas.html">Megnyitás</a>
     </article>
 
     <article class="appCard">
       <h3 class="appName">Vissza az app listához</h3>
       <p class="appDesc">További lejátszók, segédprogramok és eszköz beállítások.</p>
-      <a class="btn" href="../softwares.html">Alkalmazások</a>
+      <a class="btn btn--ghost" href="../softwares.html">Alkalmazások</a>
     </article>
   </div>
 </section>
@@ -142,6 +142,17 @@
 <footer class="footnote">
   Az alkalmazás bemutatása tájékoztató jellegű. A MENIPTV előfizetés és a tartalmak külön szolgáltatásként működnek.
 </footer>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+      <div class="footer__right">
+        <a href="../softwares.html">Alkalmazások</a> · Support: Telegram / Email
+      </div>
+    </div>
+  </footer>
   </main>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
