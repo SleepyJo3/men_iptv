@@ -41,6 +41,26 @@ body{
 }
 
 .pageIntro{ margin-bottom: 22px; }
+.breadcrumb{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  font-size: 12.5px;
+  letter-spacing: .02em;
+  color: var(--muted2);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.breadcrumb a{
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .15s ease;
+}
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible{
+  color: #fff;
+}
 .pageTitle{
   font-size: clamp(28px, 3.2vw, 44px);
   line-height: 1.08;
@@ -176,6 +196,16 @@ body{
   background: rgba(255,255,255,.04);
   text-decoration:none;
   color: var(--muted2);
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.pill:hover,
+.pill:focus-visible{
+  color: #fff;
+  border-color: rgba(255,255,255,.24);
+  background: rgba(255,255,255,.08);
+}
+.pill:active{
+  border-color: rgba(255,255,255,.36);
 }
 .pill img{ width:16px; height:16px; opacity:.9; }
 
@@ -200,6 +230,10 @@ body{
 }
 .btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
 .btn:active{ transform: translateY(0); filter: brightness(.98); }
+.btn:focus-visible{
+  outline: 2px solid rgba(255,255,255,.6);
+  outline-offset: 2px;
+}
 
 .kv{
   display:grid;
