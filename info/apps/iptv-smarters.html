@@ -56,24 +56,119 @@
 <section class="section">
   <div class="kv">
     <article class="appCard">
-      <h3 class="appName">Mire jó?</h3>
-      <p class="appDesc">Kényelmes felület élő TV-hez és VOD tartalmakhoz, egyszerű kezelhetőséggel.</p>
+      <h3 class="appName">Összefoglaló</h3>
+      <p class="appDesc">
+        Az <b>IPTV Smarters</b> egy modern felületű lejátszó, amellyel élő TV-t és VOD tartalmakat tudsz kezelni
+        több eszközön. A beállítás pár perc, ha kéznél vannak a belépési adataid.
+      </p>
       <div class="platforms" style="margin-top:10px;">
         <span class="pill"><img src="../assets/img/icons/android.svg" alt="">Android</span>
         <span class="pill"><img src="../assets/img/icons/ios.svg" alt="">iOS</span>
-        <span class="pill"><img src="../assets/img/icons/androidtv.svg" alt="">Smart TV / TV box</span>
+        <span class="pill"><img src="../assets/img/icons/androidtv.svg" alt="">TV box / Smart TV</span>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn--primary" href="#beallitas">Ugrás a beállításhoz</a>
+        <a class="btn btn--ghost" href="#hibak">Gyakori hibák</a>
       </div>
     </article>
 
     <article class="appCard">
-      <h3 class="appName">Gyors indulás</h3>
+      <h3 class="appName">Gyors indulás (1 perc)</h3>
       <ul class="list">
-        <li>Telepítsd az eszközöd áruházából</li>
-        <li>Add hozzá az M3U vagy Xtream Codes adatokat</li>
-        <li>Állíts be kedvenceket és EPG-t</li>
+        <li>Telepítsd az alkalmazást az eszközöd áruházából</li>
+        <li>Válaszd a belépési módot: <b>Xtream Codes</b> vagy <b>M3U URL</b></li>
+        <li>Várd meg a lista betöltését, majd állíts be <b>Kedvenceket</b></li>
+        <li>Ellenőrizd az <b>EPG</b>-t (műsorújság), ha elérhető</li>
       </ul>
     </article>
   </div>
+</section>
+
+<section class="section" id="telepites">
+  <article class="appCard">
+    <h3 class="appName">Telepítés</h3>
+    <p class="appDesc">A legtöbb eszközön az alkalmazás elérhető a hivatalos áruházból. Telepítés után indítsd el, és válaszd a belépési módot.</p>
+    <ul class="list">
+      <li><b>Android / Android TV:</b> Play Áruház → Telepítés</li>
+      <li><b>iPhone / iPad:</b> App Store → Telepítés</li>
+      <li><b>TV box / Smart TV:</b> eszközönként eltérő (Android TV alapú eszközökön jellemzően elérhető)</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="beallitas">
+  <div class="cardGrid">
+    <article class="appCard">
+      <h3 class="appName">Beállítás – Xtream Codes API (ajánlott)</h3>
+      <p class="appDesc">Ez a legegyszerűbb és legstabilabb mód, ha ilyen adatokat kaptál.</p>
+      <ol class="list">
+        <li>Válaszd a <b>Login with Xtream Codes API</b> opciót</li>
+        <li>Add meg: <b>Felhasználónév</b>, <b>Jelszó</b>, <b>Szerver URL</b></li>
+        <li>Adj egy profilnevet (pl. „MENIPTV”)</li>
+        <li>Mentés → várd meg a csatornák és VOD betöltését</li>
+      </ol>
+      <p class="appDesc" style="margin-top:10px;opacity:.9;">
+        Tipp: a szerver URL-nél figyelj a pontos formára (ne legyen felesleges szóköz a végén).
+      </p>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">Beállítás – M3U URL</h3>
+      <p class="appDesc">Akkor hasznos, ha M3U linket kaptál (playlist URL).</p>
+      <ol class="list">
+        <li>Válaszd a <b>Load Your Playlist / File URL</b> opciót</li>
+        <li>Illeszd be az <b>M3U URL</b>-t</li>
+        <li>Adj playlist nevet, majd indítsd a betöltést</li>
+        <li>Betöltés után megjelenik a csatornalista</li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="funkciok">
+  <div class="cardGrid">
+    <article class="appCard">
+      <h3 class="appName">EPG (műsorújság)</h3>
+      <ul class="list">
+        <li>Ha az előfizetéshez tartozik EPG, gyakran automatikusan betölt</li>
+        <li>Ha van külön EPG URL, verziótól függően beállítható a beállításokban</li>
+      </ul>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">Kedvencek & Rendezés</h3>
+      <ul class="list">
+        <li>Jelöld kedvencnek a csatornákat, így gyorsan elérhetők</li>
+        <li>Használd a keresőt és a kategóriákat a gyors navigációhoz</li>
+      </ul>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">Több képernyő / Lejátszás beállítások</h3>
+      <ul class="list">
+        <li>Egyes verziókban elérhető a <b>multi-screen</b> nézet (eszközfüggő)</li>
+        <li>Ha van több hang/szinkron, válthatsz <b>Audio track</b> opcióval</li>
+        <li>Feliratnál keresd a <b>Subtitles</b> opciót (tartalomfüggő)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="hibak">
+  <article class="appCard">
+    <h3 class="appName">Gyakori hibák – gyors megoldások</h3>
+    <ul class="list">
+      <li><b>Nem lép be / “Invalid details”:</b> ellenőrizd a felhasználó/jelszó/URL mezőket (szóköz nélkül)</li>
+      <li><b>Üres lista / nem tölt be:</b> indítsd újra az appot, majd frissítsd a playlistet</li>
+      <li><b>Akadozás:</b> ellenőrizd a netet, próbálj másik csatornát, válts kisebb felbontásra ha van opció</li>
+      <li><b>Nincs EPG:</b> várj pár percet betöltés után, vagy ellenőrizd, hogy elérhető-e EPG az adott listához</li>
+    </ul>
+
+    <div class="tinyNote" style="margin-top:12px;">
+      Fontos: Az IPTV Smarters lejátszóként működik. A tartalom és az előfizetés külön szükséges.
+    </div>
+  </article>
 </section>
 
 <section class="section">
