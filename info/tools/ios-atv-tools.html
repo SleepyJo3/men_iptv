@@ -46,14 +46,109 @@
 </header>
 
 <section class="section">
+  <div class="kv">
+    <article class="appCard">
+      <h3 class="appName">Mi az atvTools?</h3>
+      <p class="appDesc">
+        Az <b>atvTools (iOS)</b> egy iPhone/iPad alkalmazás, amellyel <b>Android TV / Fire TV</b> eszközöket tudsz vezérelni a hálózaton:
+        alkalmazások telepítése (APK), fájlok küldése, alap ADB műveletek és gyors eszközkezelés.
+      </p>
+      <div class="platforms" style="margin-top:10px;">
+        <span class="pill"><img src="../assets/img/icons/ios.svg" alt="">iOS</span>
+        <span class="pill"><img src="../assets/img/icons/androidtv.svg" alt="">Android TV / Fire TV</span>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn--primary" href="#lepesek">Ugrás a lépésekhez</a>
+        <a class="btn btn--ghost" href="#hibak">Hibakeresés</a>
+      </div>
+
+      <div class="tinyNote" style="margin-top:12px;">
+        Megjegyzés: Első használatkor az alkalmazás kérhet <b>egyszeri aktiválást/vásárlást</b> (App Store-on belül).
+      </div>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">Mire jó a gyakorlatban?</h3>
+      <ul class="list">
+        <li><b>APK telepítés iPhone-ról</b> (például egy lejátszó app gyors felrakása)</li>
+        <li><b>Fájlok átküldése</b> a TV/box letöltések mappájába</li>
+        <li><b>Gyors eszközműveletek</b> (pl. cache ürítés – eszköz/Android verzió függő)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="feltetelek">
   <article class="appCard">
-    <h3 class="appName">Mire jó?</h3>
-    <p class="appDesc">Egyszerűbbé teszi a beállítást és a kompatibilis alkalmazások kezelését iPhone/iPad és Apple TV eszközökön.</p>
-    <div class="platforms" style="margin-top:10px;">
-      <span class="pill"><img src="../assets/img/icons/ios.svg" alt="">iOS</span>
-      <span class="pill"><img src="../assets/img/icons/appletv.svg" alt="">Apple TV</span>
+    <h3 class="appName">Feltételek (fontos)</h3>
+    <ul class="list">
+      <li><b>Az iPhone/iPad és a Fire TV/Android TV legyen ugyanazon a Wi-Fi hálózaton.</b></li>
+      <li>Fire TV-n engedélyezd: <b>ADB debugging</b> és <b>Ismeretlen források / Install unknown apps</b>.</li>
+      <li>Első csatlakozáskor a TV-n felugró engedélykérést <b>jóvá kell hagyni (OK)</b>.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="lepesek">
+  <article class="appCard">
+    <h3 class="appName">Lépésről lépésre – csatlakozás és telepítés</h3>
+
+    <h4 style="margin:14px 0 8px;">1) Előkészítés Fire TV-n</h4>
+    <ol class="list">
+      <li>Nyisd meg a <b>Fejlesztői beállításokat</b> (Developer Options).</li>
+      <li>Kapcsold be az <b>ADB debugging</b> opciót.</li>
+      <li>Engedélyezd az <b>Ismeretlen forrásokból származó appok telepítését</b>.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">2) atvTools indítása iPhone-on</h4>
+    <ol class="list">
+      <li>Nyisd meg az <b>atvTools</b> appot iPhone-on.</li>
+      <li>Az app indításkor megkeresi a kompatibilis eszközöket a hálózaton.</li>
+      <li>Válaszd ki a Fire TV/Android TV eszközöd a listából.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">3) Engedélyezés a TV-n</h4>
+    <ol class="list">
+      <li>A TV-n felugorhat egy engedélykérés (debugging/hozzáférés).</li>
+      <li>Nyomj <b>OK</b>-t a TV-n, hogy a kapcsolat létrejöjjön.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">4) APK telepítése iPhone-ról</h4>
+    <ol class="list">
+      <li>Az atvTools főképernyőjén nyomd meg az <b>Install</b> gombot.</li>
+      <li>Először <b>töltsd le az Android APK fájlt az iPhone-ra</b> (ez iOS-re nem települ, csak a Fájlok/Letöltések közé kerül).</li>
+      <li>Nyisd meg az iPhone <b>Letöltések</b> mappáját, és válaszd ki az APK-t.</li>
+      <li>Erősítsd meg a telepítést az atvTools-ban (Install).</li>
+      <li>Siker esetén az app megjelenik a Firesticken/Android TV-n.</li>
+    </ol>
+
+    <div class="tinyNote" style="margin-top:12px;">
+      Tipp: ha több APK-t kezelsz, érdemes az iPhone Letöltések mappáját időnként rendben tartani.
     </div>
   </article>
+</section>
+
+<section class="section" id="hibak">
+  <article class="appCard">
+    <h3 class="appName">Gyakori hibák – gyors megoldások</h3>
+    <ul class="list">
+      <li><b>Nem látja az eszközt:</b> ellenőrizd, hogy ugyanazon a Wi-Fi-n vagytok, majd indítsd újra az appot.</li>
+      <li><b>Nem csatlakozik:</b> Fire TV-n nézd meg, hogy az <b>ADB debugging</b> be van-e kapcsolva.</li>
+      <li><b>Telepítés nem indul:</b> ellenőrizd az <b>Ismeretlen források</b> engedélyt a Fire TV-n.</li>
+      <li><b>Felugró engedély:</b> első csatlakozáskor a TV-n mindig nyomj <b>OK</b>-t.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section">
+  <div class="cardGrid">
+    <article class="appCard">
+      <h3 class="appName">Vissza az app listához</h3>
+      <p class="appDesc">További ajánlott alkalmazások és eszközök egy helyen.</p>
+      <a class="btn btn--ghost" href="../softwares.html">Alkalmazások</a>
+    </article>
+  </div>
 </section>
   <footer class="footer">
     <div class="wrap footer__inner">
