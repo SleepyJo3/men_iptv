@@ -1560,6 +1560,13 @@ details p {
   font-size: 13px;
 }
 
+.footer__disclaimer {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0.6;
+}
+
 /* =========================
    Utilities
    ========================= */
