@@ -111,15 +111,14 @@
 
 .infoPage .infoWrap .badge {
   display: inline-flex;
-  width: fit-content;
+  align-self: flex-start;
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: rgba(10, 10, 10, 0.92);
-  background: linear-gradient(180deg, #ffe08a, #f7c95a);
-  border-radius: 10px;
-  padding: 6px 10px;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+  background: #f7c95a;
+  border-radius: 999px;
+  padding: 6px 12px;
 }
 
 .infoPage .infoWrap .appLogo {
