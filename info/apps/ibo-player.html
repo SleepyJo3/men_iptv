@@ -53,9 +53,16 @@
       <p class="pageLead" style="margin:0;">Prémium IPTV lejátszó alkalmazás Smart TV-kre és több platformra.</p>
     </div>
   </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+    <a class="pill" href="#attekintes">Áttekintés</a>
+    <a class="pill" href="#telepites">Telepítés</a>
+    <a class="pill" href="#beallitas">Beállítás</a>
+    <a class="pill" href="#hibak">Hibák</a>
+  </div>
 </header>
 
-<section class="section">
+<section class="section" id="attekintes">
+  <h2 class="sectionTitle">Áttekintés</h2>
   <div class="kv">
     <article class="appCard">
       <span class="badge">AJÁNLOTT</span>
@@ -84,59 +91,72 @@
   </div>
 </section>
 
-<section class="section">
-  <h2 class="sectionTitle">Hogyan működik?</h2>
+<section class="section" id="telepites">
+  <h2 class="sectionTitle">Telepítés</h2>
   <div class="cardGrid" style="margin-top:14px;">
     <article class="appCard">
-      <h3 class="appName">1. Telepítés</h3>
-      <p class="appDesc">Samsung és LG Smart TV-n hivatalos áruházból, Android/Fire TV eszközökön alkalmazásáruházból telepíthető.</p>
-      <div class="platforms" style="margin-top:10px;">
-        <span class="pill"><img src="../assets/img/icons/samsung.svg" alt="">Samsung</span>
-        <span class="pill"><img src="../assets/img/icons/lg.svg" alt="">LG</span>
-        <span class="pill"><img src="../assets/img/icons/androidtv.svg" alt="">Android TV</span>
-      </div>
+      <h3 class="appName">Smart TV áruházból</h3>
+      <p class="appDesc">Samsung és LG Smart TV-n az áruházból telepíthető, nincs szükség külső telepítőre.</p>
+      <ul class="list">
+        <li>Samsung: Apps → keresés: “IBO Player”</li>
+        <li>LG: LG Content Store → keresés: “IBO Player”</li>
+      </ul>
     </article>
 
     <article class="appCard">
-      <h3 class="appName">2. Aktiválás</h3>
-      <p class="appDesc">Első indításkor az app megjelenít egy eszközazonosítót (MAC / Device Key) az aktiváláshoz.</p>
-      <div class="platforms" style="margin-top:10px;">
-        <span class="pill"><img src="../assets/img/icons/android.svg" alt="">Gyors folyamat</span>
-      </div>
+      <h3 class="appName">Android / Fire TV</h3>
+      <p class="appDesc">Android TV-n a Google Play, Fire TV-n az Amazon Appstore a leggyorsabb út.</p>
+      <ul class="list">
+        <li>Android TV: Google Play → telepítés</li>
+        <li>Fire TV: Amazon Appstore → telepítés</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="beallitas">
+  <h2 class="sectionTitle">Beállítás</h2>
+  <div class="cardGrid" style="margin-top:14px;">
+    <article class="appCard">
+      <h3 class="appName">1) Telepítés az áruházból</h3>
+      <ul class="list">
+        <li>Samsung: Apps → keresés: “IBO Player”</li>
+        <li>LG: LG Content Store → keresés: “IBO Player”</li>
+        <li>Android TV: Google Play → telepítés</li>
+      </ul>
     </article>
 
     <article class="appCard">
-      <h3 class="appName">3. IPTV lista hozzáadása</h3>
-      <p class="appDesc">Saját IPTV listád (M3U / Xtream Codes) hozzáadása után azonnal használható.</p>
+      <h3 class="appName">2) Aktiválás</h3>
+      <p class="appDesc">Első indításkor feljegyzed a megjelenő eszközazonosítót (MAC / Device Key), majd a hivatalos aktiváló oldalon elvégzed az aktiválást.</p>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">3) IPTV lista hozzáadása</h3>
+      <p class="appDesc">Add meg az M3U linket vagy az Xtream Codes adatokat, frissítsd a listát, és indulhat a lejátszás.</p>
       <div class="platforms" style="margin-top:10px;">
         <span class="pill"><img src="../assets/img/icons/android.svg" alt="">M3U</span>
         <span class="pill"><img src="../assets/img/icons/android.svg" alt="">Xtream</span>
       </div>
     </article>
   </div>
-</section>
 
-<section class="section">
   <article class="appCard">
     <h3 class="appName">Fontos tudnivaló</h3>
     <p class="appDesc">Az IBO Player kizárólag lejátszó alkalmazás, nem tartalmaz csatornákat vagy előfizetést. Az IPTV szolgáltatás külön szükséges.</p>
   </article>
 </section>
 
-<section class="section">
-  <div class="cardGrid">
-    <article class="appCard">
-      <h3 class="appName">Beállítási útmutató</h3>
-      <p class="appDesc">Készen állsz a beállításra? Kövesd a rövid útmutatót.</p>
-      <a class="btn btn--primary" href="../guide/ibo-player-beallitas.html">Megnyitás</a>
-    </article>
-
-    <article class="appCard">
-      <h3 class="appName">Vissza az app listához</h3>
-      <p class="appDesc">További lejátszók, segédprogramok és eszköz beállítások.</p>
-      <a class="btn btn--ghost" href="../softwares.html">Alkalmazások</a>
-    </article>
-  </div>
+<section class="section" id="hibak">
+  <h2 class="sectionTitle">Hibák és megoldások</h2>
+  <article class="appCard">
+    <ul class="list">
+      <li>Nincs kép / csatorna? Ellenőrizd az M3U vagy Xtream Codes adatokat.</li>
+      <li>Aktiválás sikertelen? Ellenőrizd a megjelenített MAC / Device Key pontosságát.</li>
+      <li>Akadozik a lejátszás? Indítsd újra a TV-t és ellenőrizd a hálózatot.</li>
+      <li>Üres EPG? Frissítsd az adatokat az app menüjében.</li>
+    </ul>
+  </article>
 </section>
 
 <footer class="footnote">
