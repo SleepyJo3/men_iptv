@@ -44,11 +44,37 @@
   <h1 class="pageTitle" style="margin-top:14px;">Firestick beállítások</h1>
   <p class="pageLead">Egyetlen, átlátható útmutató az alapbeállítástól a fejlesztői mód és az ismeretlen források engedélyezéséig.</p>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+    <a class="pill" href="#miert">Miért szükséges?</a>
+    <a class="pill" href="#amazon-fiok">Amazon fiók</a>
     <a class="pill" href="#alapbeallitas">Alapbeállítás</a>
-    <a class="pill" href="#fejleszto">Fejlesztői mód</a>
+    <a class="pill" href="#fejleszto">Fejlesztői mód előhozása</a>
     <a class="pill" href="#ismeretlen">Ismeretlen források</a>
+    <a class="pill" href="#vasarlas">Vásárlás előtti info</a>
   </div>
 </header>
+
+<section class="section" id="miert">
+  <h2 class="sectionTitle">Miért szükséges a Firestick beállítása?</h2>
+  <article class="appCard">
+    <p class="appDesc">A Fire TV alapértelmezett beállításai a hivatalos áruházra korlátozódnak. Ha külső lejátszót vagy segédprogramot használsz, szükség lehet a fejlesztői módra és bizonyos engedélyekre.</p>
+    <ul class="list">
+      <li>Fejlesztői mód: a külső telepítés engedélyezéséhez szükséges.</li>
+      <li>Ismeretlen források: csak akkor kapcsold be, ha valóban telepítesz.</li>
+      <li>Nem szükséges, ha kizárólag Appstore-ból telepítesz.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="amazon-fiok">
+  <h2 class="sectionTitle">Amazon fiók</h2>
+  <article class="appCard">
+    <ul class="list">
+      <li>Az első indításkor Amazon fiók megadása kötelező.</li>
+      <li>A fiók létrehozása ingyenes.</li>
+      <li>Régiófüggetlenül használható, a beállítás később is módosítható.</li>
+    </ul>
+  </article>
+</section>
 
 <section class="section" id="alapbeallitas">
   <h2 class="sectionTitle">Alapbeállítás</h2>
@@ -77,14 +103,14 @@
 </section>
 
 <section class="section" id="fejleszto">
-  <h2 class="sectionTitle">Fejlesztői mód</h2>
+  <h2 class="sectionTitle">Fejlesztői mód előhozása</h2>
   <article class="appCard">
     <p class="appDesc">A külső telepítésekhez szükséges opciók engedélyezéséhez:</p>
     <ul class="list">
-      <li>Settings / Beállítások megnyitása</li>
-      <li>My Fire TV / Device → Developer options</li>
-      <li>Developer mód bekapcsolása</li>
-      <li>ADB Debugging bekapcsolása (ajánlott)</li>
+      <li>Settings → My Fire TV → About</li>
+      <li>Készülék névre kattintás 7× (Developer Options megjelenik)</li>
+      <li>Vissza a My Fire TV menübe → Developer Options</li>
+      <li>Kapcsold be az <b>ADB debugging</b> opciót (ajánlott)</li>
     </ul>
   </article>
 </section>
@@ -92,11 +118,25 @@
 <section class="section" id="ismeretlen">
   <h2 class="sectionTitle">Ismeretlen források</h2>
   <article class="appCard">
-    <p class="appDesc">Ha külső telepítőt használsz, engedélyezd az ismeretlen forrásokat:</p>
+    <p class="appDesc">Az ismeretlen források engedélyezése a külső telepítéshez szükséges. Csak akkor kapcsold be, amikor valóban telepítesz.</p>
     <ul class="list">
       <li>Settings / Beállítások</li>
-      <li>Developer options → Apps from Unknown Sources</li>
-      <li>Engedélyezés a szükséges alkalmazásra</li>
+      <li>Developer Options → Install Unknown Apps</li>
+      <li>Engedélyezés csak a szükséges alkalmazásra</li>
+      <li>Nem ajánlott bekapcsolva hagyni folyamatosan</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="vasarlas">
+  <h2 class="sectionTitle">Fontos vásárlás előtti információ</h2>
+  <article class="appCard">
+    <span class="badge">FIGYELEM</span>
+    <ul class="list">
+      <li>Újabb Fire TV eszközök Linux‑alapú (Vega OS) rendszerrel érkezhetnek.</li>
+      <li>Korlátozott lehet a külső appok támogatása.</li>
+      <li>Vásárlás előtt ellenőrizd az operációs rendszer típusát.</li>
+      <li>A termékleírásban ez nem mindig egyértelmű.</li>
     </ul>
   </article>
 </section>
