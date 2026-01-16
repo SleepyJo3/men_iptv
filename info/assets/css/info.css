@@ -164,6 +164,11 @@
   line-height: 1.6;
 }
 
+.infoPage .infoWrap .appNote {
+  font-size: 12px;
+  color: var(--muted2);
+}
+
 .infoPage .infoWrap .appMeta {
   margin-top: auto;
   display: flex;
