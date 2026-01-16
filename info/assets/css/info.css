@@ -178,6 +178,12 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.infoPage .infoWrap .cardActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .infoPage .infoWrap .platforms {
   display: flex;
   gap: 8px;
