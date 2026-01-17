@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8">
+    <title>48 órás teszt – igénylés rögzítve</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root{
+            --bg: #0b1220;
+            --card-bg: rgba(255,255,255,0.08);
+            --card-border: rgba(255,255,255,0.15);
+            --text: #e9eef7;
+            --muted: #b8c2d9;
+            --accent: #3ea6ff;
+            --accent-2:#6ae2ff;
+            --ok:#74f7a1;
+        }
+        *{ box-sizing:border-box }
+        html,body{ height:100% }
+        body{
+            margin:0; padding:24px;
+            color:var(--text);
+            font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background:
+                    radial-gradient(1000px 600px at 20% -10%, #13335a88, transparent 70%),
+                    radial-gradient(1000px 600px at 90% 10%, #0a244888, transparent 70%),
+                    linear-gradient(160deg,#0a1020 0%, #0c1830 60%, #0a1228 100%);
+            display:grid; place-items:center;
+        }
+        .card{
+            width:min(900px, 100%);
+            border-radius:28px;
+            padding:28px;
+            border:1px solid var(--card-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+            text-align:center;
+        }
+        .check{
+            width:64px; height:64px; border-radius:50%;
+            display:grid; place-items:center; margin:0 auto 14px;
+            background:linear-gradient(135deg,var(--ok), #3bd6a1); color:#0b1220;
+            font-weight:900; font-size:28px; box-shadow: 0 10px 24px rgba(55,240,170,.35);
+        }
+        h1{ margin:8px 0 8px; font-size:26px }
+        p{ margin:6px 0; color:var(--muted); line-height:1.55 }
+        a.btn{
+            display:inline-block; margin-top:16px; padding:12px 18px; border-radius:999px;
+            background:linear-gradient(90deg,var(--accent),var(--accent-2));
+            color:#081222; font-weight:700; text-decoration:none; letter-spacing:.2px;
+            box-shadow: 0 10px 24px rgba(58,167,255,.35);
+        }
+    </style>
+</head>
+<body>
+<section class="card">
+    <div class="check">✓</div>
+    <h1>Köszönjük az igénylést!</h1>
+    <p>A 48 órás teszt igénylését rögzítettük.</p>
+    <p>Hamarosan <b>e-mailt küldünk</b>, amelyben megtalálsz minden szükséges információt a tesztidőszak igénybevételéhez.</p>
+    <p>Kérjük, <b>ellenőrizd a spam/promóciós mappádat</b> is, mert előfordulhat, hogy oda kerül.</p>
+    <p>Ha <b>1 órán belül</b> nem érkezne meg az e-mail, vedd fel velünk a kapcsolatot itt:</p>
+    <a class="btn" href="https://meniptv.com" target="_blank" rel="noopener">
+        Lépj kapcsolatba a supporttal
+    </a>
+</section>
+</body>
+</html>
