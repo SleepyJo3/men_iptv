@@ -1,143 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-    <meta charset="utf-8">
-    <title>48 órás teszt igénylése</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MENIPTV — 48 órás ingyenes teszt</title>
+    <meta
+      name="description"
+      content="Igényelj 48 órás ingyenes MENIPTV tesztet: add meg az e-mail címed és válassz felhasználónevet a gyors belépéshez."
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/css/styles.css?v=3" />
     <style>
-        :root{
-            --bg: #0b1220;
-            --card-bg: rgba(255,255,255,0.08);
-            --card-border: rgba(255,255,255,0.15);
-            --text: #e9eef7;
-            --muted: #b8c2d9;
-            --accent: #3ea6ff;
-            --accent-2:#6ae2ff;
-            --danger:#ff5577;
-            --input-bg:#ffffff;
-            --placeholder:#8fa1bd;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-            color:var(--text);
-            background:
-                    radial-gradient(1000px 600px at 20% -10%, #13335a88, transparent 70%),
-                    radial-gradient(1000px 600px at 90% 10%, #0a244888, transparent 70%),
-                    linear-gradient(160deg,#0a1020 0%, #0c1830 60%, #0a1228 100%);
-            display:grid;
-            place-items:center;
-            padding:24px;
-        }
-        .card{
-            width:min(860px, 100%);
-            border-radius:28px;
-            padding:28px;
-            border:1px solid var(--card-border);
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow:
-                    0 10px 30px rgba(0,0,0,.35),
-                    inset 0 1px 0 rgba(255,255,255,.05);
-        }
-        .header{
-            display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap; margin-bottom:18px;
-        }
-        .badge{
-            padding:6px 10px; border-radius:999px;
-            font-size:12px; letter-spacing:.3px;
-            background:linear-gradient(90deg,var(--accent),var(--accent-2));
-            color:#081222; font-weight:700;
-        }
-        h1{
-            margin:0; font-size:28px; line-height:1.2; font-weight:800;
-            letter-spacing:.2px;
-        }
-        .sub{
-            color:var(--muted); margin-top:6px; font-size:14px;
-        }
+      .freeTest {
+        padding: 140px 0 80px;
+      }
 
-        form{margin-top:12px}
-        .row{
-            display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;
-        }
-        @media (max-width:720px){ .row{grid-template-columns:1fr} }
+      .freeTest__grid {
+        display: grid;
+        gap: 28px;
+        align-items: start;
+      }
 
-        .input{
-            position:relative;
-        }
-        .input input{
-            width:100%;
-            border:none;
-            outline:none;
-            height:54px;
-            padding:0 18px;
-            border-radius:999px;
-            background:var(--input-bg);
-            color:#0b1220;
-            font-size:16px;
-            box-shadow: 0 6px 18px rgba(0,0,0,.15);
-        }
-        .input input::placeholder{ color:var(--placeholder); }
-        .input input:focus{
-            box-shadow: 0 0 0 3px rgba(62,166,255,.25), 0 8px 22px rgba(0,0,0,.25);
-        }
+      .freeTest__kicker {
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(255, 106, 0, 0.9);
+        font-weight: 700;
+      }
 
-        .hint{ font-size:12px; color:var(--muted); margin:6px 2px 18px }
+      .freeTest__intro {
+        margin: 12px 0 0;
+        color: rgba(238, 231, 218, 0.76);
+      }
 
-        .actions{
-            display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-        }
-        .btn{
-            height:52px; padding:0 22px; border:none; cursor:pointer;
-            border-radius:999px; font-weight:700; letter-spacing:.2px;
-            background:linear-gradient(90deg,var(--accent),var(--accent-2));
-            color:#081222;
-            box-shadow: 0 10px 24px rgba(58, 167, 255, .35);
-            transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
-        }
-        .btn:hover{ transform: translateY(-1px); filter:saturate(1.05) }
-        .btn:active{ transform: translateY(0) scale(.99) }
+      .freeTest .orderBox {
+        transform: none;
+      }
 
-        /* accessible labels (visually hidden) */
-        .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-            overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+      .field__helper {
+        display: block;
+        font-size: 12px;
+        color: rgba(238, 231, 218, 0.6);
+        margin-top: 6px;
+      }
+
+      .freeTest__trust {
+        margin-top: 12px;
+        font-size: 12px;
+        color: rgba(238, 231, 218, 0.6);
+        line-height: 1.6;
+      }
+
+      .freeTest__trust span {
+        display: block;
+      }
+
+      .btn:focus-visible,
+      .field input:focus-visible {
+        outline: 3px solid rgba(255, 106, 0, 0.45);
+        outline-offset: 2px;
+      }
     </style>
-</head>
-<body>
-<section class="card" role="region" aria-labelledby="title">
-    <div class="header">
-        <span class="badge">48 ÓRÁS INGYENES TESZT</span>
-        <h1 id="title">Lépj kapcsolatba velünk – teszt hozzáférés</h1>
-        <p class="sub">Állíts be egy felhasználónevet, majd add meg az e-mail címed és igényelj 48 órás teszt fiókot a BigBoxPlayerhez.</p>
-    </div>
+  </head>
 
-   <form action="#" onsubmit="return false;" novalidate>
+  <body>
+    <div class="pageBg" aria-hidden="true"></div>
 
-
-        <div class="row">
-            <div class="input">
-                <label class="vh" for="username">Felhasználónév</label>
-                <input id="username" name="username" type="text" inputmode="latin" autocomplete="username"
-                       placeholder="Felhasználónév (max. 10 karakter)" required minlength="3" maxlength="10">
-                <span style="color:var(--danger);font-size:0.95em;">Max. 10 karakter</span>
+    <header class="topbar">
+      <div class="wrap topbar__inner">
+        <a class="brand" href="/#order">
+          <img class="brand__logo" src="/assets/img/meniptv-logo.png" alt="MENIPTV logo" />
+          <div class="brand__text">
+            <div class="brand__mark">
+              <span class="brand__men">MEN</span><span class="brand__iptv">IPTV</span>
             </div>
-            <div class="input">
-                <label class="vh" for="email">E-mail cím</label>
-                <input id="email" name="email" type="email" autocomplete="email"
-                       placeholder="E-mail cím" required maxlength="50">
+            <div class="brand__tag">KING OF STREAMING</div>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="/#features">Miért mi?</a>
+          <a href="/#setup">Hogyan működik?</a>
+          <a href="/#plans">Csomagok</a>
+          <a href="/#faq">GYIK</a>
+          <a href="/info/softwares.html">Alkalmazások</a>
+        </nav>
+
+        <a class="btn btn--ghost" href="/free_test/app.html">INGYENES PRÓBA</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="freeTest">
+        <div class="wrap freeTest__grid">
+          <div>
+            <div class="freeTest__kicker">48 ÓRÁS INGYENES TESZT</div>
+            <h1>48 órás ingyenes teszt igénylése</h1>
+            <p class="freeTest__intro">Add meg az e-mail címed és válassz egy felhasználónevet (max. 10 karakter).</p>
+          </div>
+
+          <div class="orderBox">
+            <div class="orderBox__head">
+              <div class="orderBox__title">Teszt hozzáférés</div>
+              <div class="orderBox__sub">Gyors aktiválás • E-mailben küldött belépés</div>
             </div>
+
+            <form class="orderForm" novalidate>
+              <label class="field" for="email">
+                <span>E-mail cím</span>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="email@domain.com" required />
+              </label>
+
+              <label class="field" for="username">
+                <span>Felhasználónév</span>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  inputmode="latin"
+                  autocomplete="username"
+                  placeholder="pl. lajos10"
+                  required
+                  minlength="3"
+                  maxlength="10"
+                />
+                <span class="field__helper">Max. 10 karakter (betű / szám).</span>
+              </label>
+
+              <button type="submit" class="btn btn--primary">Tesztemet kérem</button>
+
+              <div class="freeTest__trust">
+                <span>Az adatokat kizárólag a teszt hozzáférés létrehozásához használjuk.</span>
+                <span>Ha nem érkezik e-mail, ellenőrizd a Spam / Promóciók mappát.</span>
+              </div>
+
+              <div class="tinyNote">Éles oldalon a beküldés aktív.</div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="wrap footer__inner">
+          <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+          <div class="footer__right">
+            <a href="/free_test/app.html">Ingyenes próba</a> · Support: Telegram / Email
+          </div>
         </div>
 
-        <p class="hint">A gombra kattintva elküldöd az igénylést a 48 órás tesztre.</p>
-
-        <div class="actions">
-            <button class="btn" type="submit">Teszt igénylése</button>
+        <div class="wrap footer__disclaimer">
+          A meniptv.com nem üzemeltet streaming szervereket egyetlen országban sem. A weboldal kizárólag információs célú, az alkalmazások önálló fejlesztők termékei.
         </div>
-    </form>
-</section>
-</body>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
