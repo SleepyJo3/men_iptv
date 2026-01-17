@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MENIPTV — 48 órás ingyenes próba lehetőség</title>
+    <meta
+      name="description"
+      content="Igényelj 48 órás ingyenes MENIPTV próbát: add meg az e-mail címed és válassz felhasználónevet a gyors belépéshez."
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../assets/css/styles.css?v=3" />
+    <style>
+      .freeTest {
+        padding: 140px 0 80px;
+      }
+
+      .freeTest__grid {
+        display: grid;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .freeTest__kicker {
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(255, 106, 0, 0.9);
+        font-weight: 700;
+      }
+
+      .freeTest__intro {
+        margin: 12px 0 0;
+        color: rgba(238, 231, 218, 0.76);
+      }
+
+      .freeTest .orderBox {
+        transform: none;
+      }
+
+      .field__helper {
+        display: block;
+        font-size: 12px;
+        color: rgba(238, 231, 218, 0.6);
+        margin-top: 6px;
+      }
+
+      .freeTest__trust {
+        margin-top: 12px;
+        font-size: 12px;
+        color: rgba(238, 231, 218, 0.6);
+        line-height: 1.6;
+      }
+
+      .freeTest__trust span {
+        display: block;
+      }
+
+      .btn:focus-visible,
+      .field input:focus-visible {
+        outline: 3px solid rgba(255, 106, 0, 0.45);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="pageBg" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="wrap topbar__inner">
+        <a class="brand" href="../#order">
+          <img class="brand__logo" src="../assets/img/meniptv-logo.png" alt="MENIPTV logo" />
+          <div class="brand__text">
+            <div class="brand__mark">
+              <span class="brand__men">MEN</span><span class="brand__iptv">IPTV</span>
+            </div>
+            <div class="brand__tag">KING OF STREAMING</div>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="../#features">Miért mi?</a>
+          <a href="../#setup">Hogyan működik?</a>
+          <a href="../#plans">Csomagok</a>
+          <a href="../#faq">GYIK</a>
+          <a href="../info/softwares.html">Alkalmazások</a>
+        </nav>
+
+        <a class="btn btn--ghost" href="app.html">INGYENES PRÓBA</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="freeTest">
+        <div class="wrap freeTest__grid">
+          <div>
+            <div class="freeTest__kicker">48 ÓRÁS INGYENES PRÓBA</div>
+            <h1>48 órás ingyenes próba igénylése</h1>
+            <p class="freeTest__intro">Add meg az e-mail címed és válassz egy felhasználónevet (max. 10 karakter).</p>
+          </div>
+
+          <div class="orderBox">
+            <div class="orderBox__head">
+              <div class="orderBox__title">Próba hozzáférés</div>
+              <div class="orderBox__sub">Gyors aktiválás • E-mailben küldött belépés</div>
+            </div>
+
+            <form class="orderForm" novalidate>
+              <label class="field" for="email">
+                <span>E-mail cím</span>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="email@domain.com" required />
+              </label>
+
+              <label class="field" for="username">
+                <span>Felhasználónév</span>
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  inputmode="latin"
+                  autocomplete="username"
+                  placeholder="pl.Miksa11"
+                  required
+                  minlength="3"
+                  maxlength="10"
+                />
+                <span class="field__helper">Max. 10 karakter (betű / szám).</span>
+              </label>
+
+              <button type="submit" class="btn btn--primary">Kérem a próba lehetőséget</button>
+
+              <div class="freeTest__trust">
+                <span>Az adatokat kizárólag a próba hozzáférés létrehozásához használjuk.</span>
+                <span>Ha nem érkezik e-mail, ellenőrizd a Spam / Promóciók mappát.</span>
+              </div>
+
+              <div class="tinyNote">Éles oldalon a beküldés aktív.</div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="wrap footer__inner">
+          <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+          <div class="footer__right">
+            <a href="app.html">Ingyenes próba</a> · Support: Telegram / Email
+          </div>
+        </div>
+
+        <div class="wrap footer__disclaimer">
+          A meniptv.com nem üzemeltet streaming szervereket egyetlen országban sem. A weboldal kizárólag információs célú, az alkalmazások önálló fejlesztők termékei.
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
