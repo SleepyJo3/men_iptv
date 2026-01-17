@@ -6,83 +6,143 @@ $message = isset($in['message']) ? trim($in['message']) : 'Ismeretlen hiba tört
 // XSS védelem
 function e($v){ return htmlspecialchars((string)$v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); }
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
-<head>
-    <meta charset="utf-8">
-    <title>Hiba történt</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MENIPTV — Hiba</title>
+    <meta
+      name="description"
+      content="Hiba történt a 48 órás MENIPTV teszt igénylése közben. Próbáld újra vagy lépj kapcsolatba a supporttal."
+    />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/css/styles.css?v=3" />
     <style>
-        :root{
-            --bg: #0b1220;
-            --card-bg: rgba(255,255,255,0.08);
-            --card-border: rgba(255,255,255,0.15);
-            --text: #e9eef7;
-            --muted: #b8c2d9;
-            --danger:#ff5577;
-            --danger-2:#ff99a9;
-        }
-        *{ box-sizing: border-box }
-        html,body{ height:100% }
-        body{
-            margin:0; padding:24px;
-            color:var(--text);
-            font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-            background:
-                    radial-gradient(1000px 600px at 20% -10%, #401010aa, transparent 70%),
-                    radial-gradient(1000px 600px at 90% 10%, #220808aa, transparent 70%),
-                    linear-gradient(160deg,#0a1020 0%, #1a0c14 60%, #0a1228 100%);
-            display:grid; place-items:center;
-        }
-        .card{
-            width:min(900px, 100%);
-            border-radius:28px;
-            padding:28px;
-            border:1px solid var(--card-border);
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
-            text-align:center;
-        }
-        .icon{
-            width:60px; height:60px; border-radius:50%;
-            display:grid; place-items:center;
-            background:linear-gradient(135deg,var(--danger),var(--danger-2));
-            color:#0b1220; font-weight:900; font-size:28px;
-            margin:0 auto 18px;
-            box-shadow: 0 10px 24px rgba(255,80,100,.35);
-        }
-        h1{ margin:0; font-size:26px; }
-        .sub{ color:var(--muted); margin:8px 0 18px; font-size:15px; }
-        .msg{
-            background:rgba(255,255,255,.08);
-            border:1px solid rgba(255,255,255,.15);
-            border-radius:14px;
-            padding:14px;
-            font-size:16px;
-            margin-top:12px;
-            color:#ffe0e0;
-        }
-        .actions{ margin-top:22px; }
-        .btn{
-            height:44px; padding:0 18px; border:none; cursor:pointer;
-            border-radius:999px; font-weight:700;
-            background:linear-gradient(90deg,var(--danger),var(--danger-2));
-            color:#081222;
-            box-shadow: 0 10px 24px rgba(255,80,100,.35);
-        }
+      .freeTest {
+        padding: 140px 0 80px;
+      }
+
+      .freeTest__grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .freeTest__kicker {
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(255, 106, 0, 0.9);
+        font-weight: 700;
+      }
+
+      .freeTest__copy {
+        color: rgba(238, 231, 218, 0.78);
+        line-height: 1.6;
+      }
+
+      .freeTest__message {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 45, 30, 0.4);
+        background: rgba(8, 8, 12, 0.65);
+        color: rgba(255, 230, 214, 0.9);
+      }
+
+      .freeTest__actions {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .freeTest .orderBox {
+        transform: none;
+      }
+
+      .btn:focus-visible {
+        outline: 3px solid rgba(255, 106, 0, 0.45);
+        outline-offset: 2px;
+      }
     </style>
-</head>
-<body>
-<section class="card">
-    <div class="icon">!</div>
-    <h1>Hiba történt</h1>
-    <p class="sub">Sajnáljuk, de az igénylés feldolgozása közben hiba lépett fel.</p>
-    <div class="msg"><?= e($message) ?></div>
-    <div class="actions">
-        <button class="btn" onclick="history.back()">Vissza az űrlaphoz</button>
-    </div>
-</section>
-</body>
+  </head>
+
+  <body>
+    <div class="pageBg" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="wrap topbar__inner">
+        <a class="brand" href="/#order">
+          <img class="brand__logo" src="/assets/img/meniptv-logo.png" alt="MENIPTV logo" />
+          <div class="brand__text">
+            <div class="brand__mark">
+              <span class="brand__men">MEN</span><span class="brand__iptv">IPTV</span>
+            </div>
+            <div class="brand__tag">KING OF STREAMING</div>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="/#features">Miért mi?</a>
+          <a href="/#setup">Hogyan működik?</a>
+          <a href="/#plans">Csomagok</a>
+          <a href="/#faq">GYIK</a>
+          <a href="/info/softwares.html">Alkalmazások</a>
+        </nav>
+
+        <a class="btn btn--ghost" href="/free_test/app.html">INGYENES PRÓBA</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="freeTest">
+        <div class="wrap freeTest__grid">
+          <div>
+            <div class="freeTest__kicker">Hiba</div>
+            <h1>Valami nem sikerült</h1>
+          </div>
+
+          <div class="orderBox">
+            <div class="orderBox__head">
+              <div class="orderBox__title">Hiba történt</div>
+              <div class="orderBox__sub">Kérjük próbáld újra, ha szükséges.</div>
+            </div>
+
+            <div class="orderForm freeTest__copy">
+              <p>Kérjük próbáld újra. Ha a hiba ismétlődik, vedd fel velünk a kapcsolatot.</p>
+              <div class="freeTest__message"><?= e($message) ?></div>
+
+              <div class="freeTest__actions">
+                <a class="btn btn--primary" href="/free_test/app.html">Vissza az igényléshez</a>
+                <a class="btn btn--ghost" href="/#contacts">Support</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="wrap footer__inner">
+          <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+          <div class="footer__right">
+            <a href="/free_test/app.html">Ingyenes próba</a> · Support: Telegram / Email
+          </div>
+        </div>
+
+        <div class="wrap footer__disclaimer">
+          A meniptv.com nem üzemeltet streaming szervereket egyetlen országban sem. A weboldal kizárólag információs célú, az alkalmazások önálló fejlesztők termékei.
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
