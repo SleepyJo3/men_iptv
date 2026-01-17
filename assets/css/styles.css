@@ -1560,6 +1560,38 @@ details p {
   font-size: 13px;
 }
 
+.footer__disclaimer {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0.55;
+  margin-top: 12px;
+  padding-bottom: 18px;
+}
+
+.footer__right {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+@media (max-width: 720px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .footer__right {
+    opacity: 0.8;
+  }
+
+  .footer__disclaimer {
+    text-align: left;
+    opacity: 0.6;
+    padding-bottom: 16px;
+  }
+}
+
 /* =========================
    Utilities
    ========================= */

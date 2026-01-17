@@ -1,0 +1,281 @@
+.infoPage {
+  --max: 1100px;
+}
+
+.infoPage .infoWrap {
+  width: min(100% - 40px, var(--max));
+  margin: 0 auto;
+  padding: 120px 0 54px;
+}
+
+.infoPage .infoWrap .pageIntro {
+  margin-bottom: 22px;
+}
+
+.infoPage .infoWrap .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--muted2);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.infoPage .infoWrap .breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.infoPage .infoWrap .breadcrumb a:hover,
+.infoPage .infoWrap .breadcrumb a:focus-visible {
+  color: #fff;
+}
+
+.infoPage .infoWrap .pageTitle {
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+
+.infoPage .infoWrap .pageLead {
+  max-width: 860px;
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.infoPage .infoWrap .section {
+  margin-top: 34px;
+}
+
+.infoPage .infoWrap .sectionHead {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.infoPage .infoWrap .sectionTitle {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.infoPage .infoWrap .cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.infoPage .infoWrap .appCard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(10, 10, 14, 0.98), rgba(4, 4, 8, 0.98));
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 45, 30, 0.12);
+  overflow: hidden;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 280px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.infoPage .infoWrap .appCard::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(240px 140px at 18% 18%, rgba(255, 45, 30, 0.12), transparent 60%),
+    radial-gradient(260px 160px at 85% 20%, rgba(255, 106, 0, 0.1), transparent 62%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.infoPage .infoWrap .appCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.infoPage .infoWrap .badge {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: rgba(10, 10, 10, 0.92);
+  background: #f7c95a;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.infoPage .infoWrap .appLogo {
+  width: 72px;
+  height: 72px;
+  padding: 8px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.45),
+    inset 0 0 16px rgba(255, 255, 255, 0.08),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.infoPage .infoWrap .appLogo.isRound {
+  border-radius: 22px;
+}
+
+.infoPage .infoWrap .appLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.infoPage .infoWrap .appName {
+  margin: 0;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.infoPage .infoWrap .appDesc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13.6px;
+  line-height: 1.6;
+}
+
+.infoPage .infoWrap .appNote {
+  font-size: 12px;
+  color: var(--muted2);
+}
+
+.infoPage .infoWrap .appMeta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.infoPage .infoWrap .cardActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.infoPage .infoWrap .platforms {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--muted2);
+  font-size: 12px;
+}
+
+.infoPage .infoWrap .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  color: var(--muted2);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.infoPage .infoWrap .pill:hover,
+.infoPage .infoWrap .pill:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.infoPage .infoWrap .pill:active {
+  border-color: rgba(255, 255, 255, 0.36);
+}
+
+.infoPage .infoWrap .pill img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.9;
+}
+
+.infoPage .infoWrap .btn {
+  font-size: 13px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+.infoPage .infoWrap .appCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-strong);
+  box-shadow: 0 26px 48px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 45, 30, 0.35);
+}
+
+.infoPage .infoWrap .kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.infoPage .infoWrap .list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 13.6px;
+}
+
+.infoPage .infoWrap .footnote {
+  margin-top: 30px;
+  color: var(--muted2);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 950px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 980px) {
+  .infoPage .infoWrap .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 840px) {
+  .infoPage .infoWrap .kv {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .infoPage .infoWrap {
+    width: min(100% - 26px, var(--max));
+  }
+
+  .infoPage .infoWrap .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}

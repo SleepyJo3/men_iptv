@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>atvTools – Segédprogramok | MENIPTV</title>
+  <meta name="description" content="atvTools iOS app Android TV és Fire TV eszközök kezeléséhez, MENIPTV használathoz." />
+  <link rel="canonical" href="../tools/ios-atv-tools.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="../assets/css/info.css?v=1" />
+</head>
+<body class="infoPage">
+  <div class="pageBg" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="../../index.html#order">
+        <img class="brand__logo" src="../../assets/img/meniptv-logo.png" alt="MENIPTV logo" />
+        <div class="brand__text">
+          <div class="brand__mark">
+            <span class="brand__men">MEN</span><span class="brand__iptv">IPTV</span>
+          </div>
+          <div class="brand__tag">KING OF STREAMING</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../../index.html#features">Miért mi?</a>
+        <a href="../../index.html#setup">Hogyan működik?</a>
+        <a href="../../index.html#plans">Csomagok</a>
+        <a href="../../index.html#faq">GYIK</a>
+        <a href="../softwares.html">Alkalmazások</a>
+      </nav>
+
+      <a class="btn btn--ghost" href="../../index.html#order">INGYENES PRÓBA</a>
+    </div>
+  </header>
+  <main class="wrap infoWrap">
+
+<header class="pageIntro">
+  <a href="../softwares.html" class="pill">← Vissza az alkalmazásokhoz</a>
+  <h1 class="pageTitle" style="margin-top:14px;">atvTools</h1>
+  <p class="pageLead">iOS app Android TV és Fire TV eszközök telepítéséhez és kezeléséhez.</p>
+  <div class="cardActions" style="margin-top:12px;">
+    <a class="btn btn--ghost" href="https://tvdevinfo.com/atvtools/" target="_blank" rel="nofollow noopener noreferrer">Hivatalos oldal</a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="kv">
+    <article class="appCard">
+      <h3 class="appName">Mi az atvTools?</h3>
+      <p class="appDesc">
+        Az <b>atvTools (iOS)</b> egy iPhone/iPad alkalmazás, amellyel <b>Android TV / Fire TV</b> eszközöket tudsz vezérelni a hálózaton:
+        alkalmazások telepítése (APK), fájlok küldése, alap ADB műveletek és gyors eszközkezelés.
+      </p>
+      <div class="platforms" style="margin-top:10px;">
+        <span class="pill"><img src="../assets/img/icons/ios.svg" alt="">iOS</span>
+        <span class="pill"><img src="../assets/img/icons/androidtv.svg" alt="">Android TV</span>
+        <span class="pill"><img src="../assets/img/icons/firetv.svg" alt="">Firestick</span>
+      </div>
+
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn--primary" href="#lepesek">Ugrás a lépésekhez</a>
+        <a class="btn btn--ghost" href="#hibak">Hibakeresés</a>
+      </div>
+
+      <div class="tinyNote" style="margin-top:12px;">
+        Megjegyzés: Első használatkor az alkalmazás kérhet <b>egyszeri aktiválást/vásárlást</b> (App Store-on belül).
+      </div>
+    </article>
+
+    <article class="appCard">
+      <h3 class="appName">Mire jó a gyakorlatban?</h3>
+      <ul class="list">
+        <li><b>APK telepítés iPhone-ról</b> (például egy lejátszó app gyors felrakása)</li>
+        <li><b>Fájlok átküldése</b> a TV/box letöltések mappájába</li>
+        <li><b>Gyors eszközműveletek</b> (pl. cache ürítés – eszköz/Android verzió függő)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="sectionTitle">Mikor van rá szükség?</h2>
+  <div class="cardGrid">
+    <article class="appCard">
+      <h3 class="appName">Hasznos helyzetek</h3>
+      <ul class="list">
+        <li>Ha iPhone-ról szeretnél gyorsan APK-t telepíteni Android TV-re.</li>
+        <li>Ha fájlokat küldenél át a TV/box letöltések mappájába.</li>
+        <li>Ha távolról kezelnéd az eszközt ADB-n keresztül.</li>
+      </ul>
+    </article>
+    <article class="appCard">
+      <h3 class="appName">Mikor nem kötelező?</h3>
+      <ul class="list">
+        <li>Ha minden app elérhető a hivatalos áruházból.</li>
+        <li>Ha nem használsz Android TV/Fire TV eszközt.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="feltetelek">
+  <article class="appCard">
+    <h3 class="appName">Feltételek (fontos)</h3>
+    <ul class="list">
+      <li><b>Az iPhone/iPad és a Fire TV/Android TV legyen ugyanazon a Wi-Fi hálózaton.</b></li>
+      <li>Fire TV-n engedélyezd: <b>ADB debugging</b> és <b>Ismeretlen források / Install unknown apps</b>.</li>
+      <li>Első csatlakozáskor a TV-n felugró engedélykérést <b>jóvá kell hagyni (OK)</b>.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="lepesek">
+  <article class="appCard">
+    <h3 class="appName">Lépésről lépésre – csatlakozás és telepítés</h3>
+
+    <h4 style="margin:14px 0 8px;">1) Előkészítés Fire TV-n</h4>
+    <ol class="list">
+      <li>Nyisd meg a <b>Fejlesztői beállításokat</b> (Developer Options).</li>
+      <li>Kapcsold be az <b>ADB debugging</b> opciót.</li>
+      <li>Engedélyezd az <b>Ismeretlen forrásokból származó appok telepítését</b>.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">2) atvTools indítása iPhone-on</h4>
+    <ol class="list">
+      <li>Nyisd meg az <b>atvTools</b> appot iPhone-on.</li>
+      <li>Az app indításkor megkeresi a kompatibilis eszközöket a hálózaton.</li>
+      <li>Válaszd ki a Fire TV/Android TV eszközöd a listából.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">3) Engedélyezés a TV-n</h4>
+    <ol class="list">
+      <li>A TV-n felugorhat egy engedélykérés (debugging/hozzáférés).</li>
+      <li>Nyomj <b>OK</b>-t a TV-n, hogy a kapcsolat létrejöjjön.</li>
+    </ol>
+
+    <h4 style="margin:14px 0 8px;">4) APK telepítése iPhone-ról</h4>
+    <ol class="list">
+      <li>Az atvTools főképernyőjén nyomd meg az <b>Install</b> gombot.</li>
+      <li>Először <b>töltsd le az Android APK fájlt az iPhone-ra</b> (ez iOS-re nem települ, csak a Fájlok/Letöltések közé kerül).</li>
+      <li>Nyisd meg az iPhone <b>Letöltések</b> mappáját, és válaszd ki az APK-t.</li>
+      <li>Erősítsd meg a telepítést az atvTools-ban (Install).</li>
+      <li>Siker esetén az app megjelenik a Firesticken/Android TV-n.</li>
+    </ol>
+
+    <div class="tinyNote" style="margin-top:12px;">
+      Tipp: ha több APK-t kezelsz, érdemes az iPhone Letöltések mappáját időnként rendben tartani.
+    </div>
+  </article>
+</section>
+
+<section class="section">
+  <h2 class="sectionTitle">Használati tippek</h2>
+  <article class="appCard">
+    <ul class="list">
+      <li>Firestick újraindítás után indítsd el az appot, hogy a hálózati keresés frissüljön.</li>
+      <li>Engedélyek: ADB debugging és ismeretlen források nélkül a telepítés nem fog elindulni.</li>
+      <li>Hálózati stabilitás: Wi‑Fi jel gyengülésnél a kapcsolat megszakadhat.</li>
+      <li>Frissítés ellenőrzése: az App Store-ban nézd meg, van-e új verzió.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section" id="hibak">
+  <article class="appCard">
+    <h3 class="appName">Gyakori hibák – gyors megoldások</h3>
+    <ul class="list">
+      <li><b>Nem látja az eszközt:</b> ellenőrizd, hogy ugyanazon a Wi-Fi-n vagytok, majd indítsd újra az appot.</li>
+      <li><b>Nem csatlakozik:</b> Fire TV-n nézd meg, hogy az <b>ADB debugging</b> be van-e kapcsolva.</li>
+      <li><b>Telepítés nem indul:</b> ellenőrizd az <b>Ismeretlen források</b> engedélyt a Fire TV-n.</li>
+      <li><b>Felugró engedély:</b> első csatlakozáskor a TV-n mindig nyomj <b>OK</b>-t.</li>
+    </ul>
+  </article>
+</section>
+
+<section class="section">
+  <div class="cardGrid">
+    <article class="appCard">
+      <h3 class="appName">Vissza az app listához</h3>
+      <p class="appDesc">További ajánlott alkalmazások és eszközök egy helyen.</p>
+      <a class="btn btn--ghost" href="../softwares.html">Alkalmazások</a>
+    </article>
+  </div>
+</section>
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__left">© <span id="y"></span> MENIPTV</div>
+      <div class="footer__right">
+        Support: Telegram / Email
+      </div>
+    </div>
+
+    <div class="wrap footer__disclaimer">
+      A meniptv.com nem üzemeltet streaming szervereket egyetlen országban sem. A weboldal kizárólag információs célú, az alkalmazások önálló fejlesztők termékei.
+    </div>
+  </footer>
+  </main>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
